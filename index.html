@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestione Libreria - Catalogo & Inventario Magazzino</title>
+  <meta name="description" content="Applicazione web per la catalogazione libri, gestione inventario scorte, ricerca in tempo reale ed esportazione dati. Sviluppato da Valentyn Haidukov.">
+
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hv94.github.io/bookstore-catalog-manager/">
+  <meta property="og:title" content="Gestione Libreria - Catalogo & Magazzino">
+  <meta property="og:description" content="Applicazione web per la catalogazione libri, gestione inventario scorte, ricerca in tempo reale ed esportazione dati.">
+  <meta property="og:image" content="https://hv94.github.io/bookstore-catalog-manager/anteprima.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="800">
+  <meta property="og:image:type" content="image/png">
+  
+  <link rel="stylesheet" href="style.css?v=3.7">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Bar Professionale Candidato -->
+  <aside class="top-bar" aria-label="Informazioni sviluppatore">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="badge-role">Esercitazione Gestione Punto Vendita</span>
+        <span>Valentyn Haidukov &bull; Perito Informatico &bull; Categorie Protette (L. 68/99)</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="https://hv94.github.io/curriculum-vitae/" target="_blank" rel="noopener noreferrer" class="link-social">
+          Curriculum Vitae
+        </a>
+        <a href="https://www.linkedin.com/in/valentyn-haidukov" target="_blank" rel="noopener noreferrer" class="link-social">
+          LinkedIn
+        </a>
+        <a href="https://github.com/HV94/bookstore-catalog-manager" target="_blank" rel="noopener noreferrer" class="link-social">
+          Repository GitHub
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Header Principale -->
+  <header class="app-header">
+    <div class="container header-content">
+      <div class="brand">
+        <div>
+          <h1>Gestionale Libreria</h1>
+          <p class="subtitle">Catalogo Libri &amp; Inventario Magazzino Merci</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn btn-secondary" title="Cambia tema chiaro/scuro">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button id="openCartBtn" class="btn btn-cart" title="Apri Cassa e Carrello Vendite">
+          🛒 Cassa / Carrello <span id="cartCountBadge" class="cart-badge">0</span>
+        </button>
+        <button id="openModalBtn" class="btn btn-primary">
+          <span>+</span> Aggiungi Nuovo Libro
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Statistiche Rapide -->
+    <section class="stats-grid">
+      <div class="stat-card card-stat-blue">
+        <div class="stat-icon">📖</div>
+        <div>
+          <div class="stat-value" id="totalBooks">0</div>
+          <div class="stat-label">Titoli a Catalogo</div>
+        </div>
+      </div>
+      <div class="stat-card card-stat-indigo">
+        <div class="stat-icon">📦</div>
+        <div>
+          <div class="stat-value" id="totalCopies">0</div>
+          <div class="stat-label">Copie in Magazzino</div>
+        </div>
+      </div>
+      <div class="stat-card card-stat-emerald">
+        <div class="stat-icon">💶</div>
+        <div>
+          <div class="stat-value" id="totalValue">€ 0.00</div>
+          <div class="stat-label">Valore Inventario</div>
+        </div>
+      </div>
+      <div class="stat-card card-stat-amber">
+        <div class="stat-icon">⚠️</div>
+        <div>
+          <div class="stat-value" id="lowStockCount">0</div>
+          <div class="stat-label">Scorte Basse (≤ 2)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra Ricerca, Filtri ed Esportazione -->
+    <section class="toolbar">
+      
+      <!-- Filtri Rapidi Categoria (Pills) -->
+      <div class="category-pills" id="categoryPills">
+        <button class="cat-pill active" data-cat="all">📚 Tutti i Generi (500)</button>
+        <button class="cat-pill" data-cat="Informatica">💻 Informatica & Web (100)</button>
+        <button class="cat-pill" data-cat="Narrativa">📖 Narrativa (100)</button>
+        <button class="cat-pill" data-cat="Saggistica">🧠 Saggistica (100)</button>
+        <button class="cat-pill" data-cat="Classici">🏛️ Classici (100)</button>
+        <button class="cat-pill" data-cat="Scienza">🔬 Scienza & Natura (100)</button>
+      </div>
+
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Cerca per titolo, autore o codice ISBN-13..." autocomplete="off">
+      </div>
+
+      <div class="filters-row">
+        <div class="filter-group">
+          <label for="categoryFilter">Genere:</label>
+          <select id="categoryFilter">
+            <option value="all">Tutti i generi (500 volumi)</option>
+            <option value="Informatica">Informatica & Web (100)</option>
+            <option value="Narrativa">Narrativa & Romanzi (100)</option>
+            <option value="Saggistica">Saggistica (100)</option>
+            <option value="Classici">Classici (100)</option>
+            <option value="Scienza">Scienza & Natura (100)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="stockFilter">Disponibilità Scorte:</label>
+          <select id="stockFilter">
+            <option value="all">Tutte le disponibilità</option>
+            <option value="available">Disponibili (> 2 copie)</option>
+            <option value="low">In esaurimento (1-2 copie)</option>
+            <option value="out">Esauriti (0 copie)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="sortBy">Ordina per:</label>
+          <select id="sortBy">
+            <option value="stock-desc">Quantità magazzino (Max &rarr; Min)</option>
+            <option value="title-asc">Titolo (A - Z)</option>
+            <option value="title-desc">Titolo (Z - A)</option>
+            <option value="price-asc">Prezzo (crescente)</option>
+            <option value="price-desc">Prezzo (decrescente)</option>
+          </select>
+        </div>
+
+        <div class="toolbar-actions">
+          <button id="exportCsvBtn" class="btn btn-outline" title="Scarica il catalogo in formato CSV compatibile con Excel">
+            📥 Esporta Excel (CSV)
+          </button>
+          <button id="resetDataBtn" class="btn btn-text" title="Ripristina il catalogo dimostrativo">
+            ↺ Ripristina dati
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Griglia dei Libri -->
+    <section>
+      <div id="booksGrid" class="books-grid">
+        <!-- Generato dinamicamente via JavaScript -->
+      </div>
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">🔍</div>
+        <h3>Nessun libro trovato</h3>
+        <p>Prova a modificare i filtri di ricerca o la categoria selezionata.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modale Aggiungi / Modifica Libro -->
+  <div id="bookModal" class="modal hidden">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="modalTitle">Aggiungi Nuovo Libro al Catalogo</h2>
+        <button id="closeModalBtn" class="close-btn">&times;</button>
+      </div>
+      <form id="bookForm">
+        <input type="hidden" id="bookId">
+        
+        <div class="form-group">
+          <label for="bookTitle">Titolo del Libro *</label>
+          <input type="text" id="bookTitle" required placeholder="Es. Il nome della rosa">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookAuthor">Autore *</label>
+            <input type="text" id="bookAuthor" required placeholder="Es. Umberto Eco">
+          </div>
+          <div class="form-group">
+            <label for="bookCategory">Genere *</label>
+            <select id="bookCategory" required>
+              <option value="Narrativa">Narrativa & Romanzi</option>
+              <option value="Informatica">Informatica & Web</option>
+              <option value="Saggistica">Saggistica</option>
+              <option value="Classici">Classici</option>
+              <option value="Scienza">Scienza & Natura</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookIsbn">Codice ISBN-13 *</label>
+            <input type="text" id="bookIsbn" required placeholder="Es. 978-88-04-71234-5">
+          </div>
+          <div class="form-group">
+            <label for="bookYear">Anno Edizione</label>
+            <input type="number" id="bookYear" min="1900" max="2099" value="2024">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookPrice">Prezzo di Vendita (€) *</label>
+            <input type="number" id="bookPrice" step="0.01" min="0" required placeholder="Es. 16.50">
+          </div>
+          <div class="form-group">
+            <label for="bookStock">Quantità a Magazzino *</label>
+            <input type="number" id="bookStock" min="0" required placeholder="Es. 5">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="cancelModalBtn" class="btn btn-secondary">Annulla</button>
+          <button type="submit" class="btn btn-primary">Salva nel Catalogo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Carrello & Cassa POS Slide-out Drawer -->
+  <div id="cartOverlay" class="cart-overlay"></div>
+  <aside id="cartDrawer" class="cart-drawer" aria-label="Cassa vendite e carrello">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <span class="cart-icon">🛒</span>
+        <div>
+          <h3>Cassa & Registratore POS</h3>
+          <p class="cart-subtitle">Punto Vendita Libreria BiblioTech</p>
+        </div>
+      </div>
+      <button id="closeCartBtn" class="close-btn" title="Chiudi cassa">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      <!-- Stato Carrello Vuoto -->
+      <div id="cartEmptyState" class="cart-empty-state">
+        <div class="cart-empty-icon">🛒</div>
+        <h4>La cassa è vuota</h4>
+        <p>Aggiungi uno o più libri dal catalogo per avviare una vendita al banco.</p>
+      </div>
+
+      <!-- Elenco Libri nel Carrello -->
+      <div id="cartItemsList" class="cart-items-list hidden">
+        <!-- Generato dinamicamente via JS -->
+      </div>
+    </div>
+
+    <!-- Footer Cassa & Pagamento -->
+    <div id="cartDrawerFooter" class="cart-drawer-footer hidden">
+      <div class="cart-totals">
+        <div class="cart-total-row">
+          <span>Articoli totali:</span>
+          <strong id="cartTotalItems">0 volumi</strong>
+        </div>
+        <div class="cart-total-row">
+          <span>IVA Editoria (4% assolta):</span>
+          <span id="cartIva">€ 0.00</span>
+        </div>
+        <div class="cart-total-row grand-total">
+          <span>TOTALE DA PAGARE:</span>
+          <strong id="cartGrandTotal">€ 0.00</strong>
+        </div>
+      </div>
+
+      <!-- Scelta Metodo di Pagamento -->
+      <div class="payment-method-section">
+        <label class="section-label">Metodo di Pagamento:</label>
+        <div class="payment-options">
+          <button type="button" class="payment-opt-btn active" id="payMethodCash" data-method="cash">
+            💵 Contanti
+          </button>
+          <button type="button" class="payment-opt-btn" id="payMethodPos" data-method="pos">
+            💳 POS / Carta
+          </button>
+        </div>
+
+        <!-- Sezione Contanti con Calcolo Resto -->
+        <div id="cashPaymentBox" class="payment-details-box">
+          <label for="cashReceivedInput">Contante ricevuto dal cliente (€):</label>
+          <div class="cash-input-row">
+            <span class="currency-prefix">€</span>
+            <input type="number" id="cashReceivedInput" step="0.50" min="0" placeholder="Es. 50.00">
+          </div>
+          <div class="cash-quick-btns">
+            <button type="button" class="btn-cash-quick" id="cashExactBtn">Esatto</button>
+            <button type="button" class="btn-cash-quick" data-amount="10">€ 10</button>
+            <button type="button" class="btn-cash-quick" data-amount="20">€ 20</button>
+            <button type="button" class="btn-cash-quick" data-amount="50">€ 50</button>
+            <button type="button" class="btn-cash-quick" data-amount="100">€ 100</button>
+          </div>
+          <div id="changeDueBox" class="change-box info">
+            <span>Resto dovuto al cliente:</span>
+            <strong id="changeDueValue">€ 0.00</strong>
+          </div>
+        </div>
+
+        <!-- Sezione POS Elettronico -->
+        <div id="posPaymentBox" class="payment-details-box hidden">
+          <div class="pos-status-box">
+            <div class="pos-terminal-icon">📟</div>
+            <div class="pos-terminal-info">
+              <div class="pos-status-text" id="posStatusText">Pronto per inserimento carta o Contactless...</div>
+              <div class="pos-circuits">Circuito: Bancomat &bull; Visa &bull; Mastercard &bull; Apple Pay</div>
+            </div>
+          </div>
+          <button type="button" id="posSimulateBtn" class="btn btn-pos-action">
+            📶 Avvicina Carta / Simula Transazione POS
+          </button>
+        </div>
+      </div>
+
+      <!-- Pulsante Emetti Scontrino -->
+      <div class="cart-actions-bottom">
+        <button id="checkoutBtn" class="btn btn-checkout">
+          ✅ Completa Vendita & Scarica Scorte
+        </button>
+        <button id="clearCartBtn" class="btn btn-clear-cart" title="Azzera cassa">
+          Svuota Cassa
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Modale Scontrino Fiscale / Ricevuta Vendita -->
+  <div id="receiptModal" class="modal hidden">
+    <div class="modal-overlay" id="receiptOverlay"></div>
+    <div class="modal-card receipt-modal-card">
+      <div class="receipt-paper" id="receiptPaper">
+        <div class="receipt-header">
+          <div class="receipt-logo">📚 BIBLIOTECH</div>
+          <div class="receipt-store">Punto Vendita Libreria & Editoria</div>
+          <div class="receipt-address">Via Vestina, 120 &bull; Città Sant'Angelo (PE)</div>
+          <div class="receipt-piva">P.IVA: IT09876543210 &bull; Tel. 085 9691234</div>
+          <div class="receipt-divider">================================</div>
+          <div class="receipt-meta">
+            <div>DOC. COMMERCIALE DI VENDITA</div>
+            <div id="receiptDate">31/10/2026 - 10:35</div>
+            <div>OPERATORE: Valentyn Haidukov (Cassa 01)</div>
+          </div>
+          <div class="receipt-divider">--------------------------------</div>
+        </div>
+
+        <div class="receipt-items" id="receiptItemsContainer">
+          <!-- Righe scontrino generate via JS -->
+        </div>
+
+        <div class="receipt-totals">
+          <div class="receipt-divider">--------------------------------</div>
+          <div class="receipt-row bold">
+            <span>TOTALE COMPLESSIVO:</span>
+            <span id="receiptTotalAmount">€ 0.00</span>
+          </div>
+          <div class="receipt-row" id="receiptPaymentRow">
+            <span>PAGAMENTO:</span>
+            <span id="receiptPaymentType">CONTANTI</span>
+          </div>
+          <div class="receipt-row" id="receiptCashRow">
+            <span>RICEVUTO:</span>
+            <span id="receiptCashReceived">€ 0.00</span>
+          </div>
+          <div class="receipt-row bold" id="receiptChangeRow">
+            <span>RESTO:</span>
+            <span id="receiptChangeAmount">€ 0.00</span>
+          </div>
+          <div class="receipt-row" id="receiptPosRow">
+            <span>CODICE AUTH POS:</span>
+            <span id="receiptPosAuth">#94821</span>
+          </div>
+          <div class="receipt-divider">================================</div>
+          <div class="receipt-vat-note">
+            IVA assolta all'origine dall'editore ai sensi dell'art. 74, primo comma, lettera c), D.P.R. 633/1972
+          </div>
+          <div class="receipt-barcode">||||| ||||||| |||| |||||||| |||||</div>
+          <div class="receipt-thanks">GRAZIE PER LA VISITA &bull; ARRIVEDERCI</div>
+          <div class="receipt-thanks">www.hv94.github.io/bookstore-catalog-manager</div>
+        </div>
+      </div>
+
+      <div class="receipt-actions">
+        <button id="downloadPdfReceiptBtn" class="btn btn-primary" title="Scarica lo scontrino in formato PDF reale">
+          📥 Scarica PDF Scontrino
+        </button>
+        <button id="printReceiptBtn" class="btn btn-outline" title="Stampa scontrino da browser">
+          🖨️ Stampa
+        </button>
+        <button id="closeReceiptBtn" class="btn btn-secondary">
+          ✨ Nuova Vendita
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer con Altri Progetti del Candidato -->
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <div class="other-projects">
+        <span class="other-projects-title">Altri progetti di Valentyn Haidukov:</span>
+        <div class="project-pills">
+          <a href="https://hv94.github.io/retail-store-catalog/" target="_blank" class="project-pill-link">
+            🛒 RetailHub (Megastore & Cassa POS)
+          </a>
+          <a href="https://hv94.github.io/tech-store-catalog/" target="_blank" class="project-pill-link">
+            💻 TechStore (Elettronica & Preventivi)
+          </a>
+          <a href="https://hv94.github.io/curriculum-vitae/" target="_blank" class="project-pill-link">
+            📄 Curriculum Vitae Ufficiale
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Progetto realizzato da <strong>Valentyn Haidukov</strong> &bull; Perito Informatico &bull; Categorie Protette (L. 68/99)</p>
+        <div class="footer-links">
+          <a href="https://github.com/HV94" target="_blank" rel="noopener">GitHub: @HV94</a>
+          <span>&bull;</span>
+          <a href="https://www.linkedin.com/in/valentyn-haidukov" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=3.8"></script>
+</body>
+</html>
