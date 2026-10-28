@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BiblioTech | Gestione Catalogo & Magazzino Libri</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Principale -->
+  <header class="app-header">
+    <div class="container header-content">
+      <div class="brand">
+        <div class="brand-icon">📚</div>
+        <div>
+          <h1>BiblioTech</h1>
+          <p class="subtitle">Gestione Catalogo & Inventario Libreria</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="btn btn-secondary" title="Cambia tema">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button id="openModalBtn" class="btn btn-primary">
+          <span>+</span> Aggiungi Libro
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Statistiche Rapide -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📖</div>
+        <div>
+          <div class="stat-value" id="totalBooks">0</div>
+          <div class="stat-label">Titoli a Catalogo</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📦</div>
+        <div>
+          <div class="stat-value" id="totalCopies">0</div>
+          <div class="stat-label">Copie in Magazzino</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">💶</div>
+        <div>
+          <div class="stat-value" id="totalValue">€ 0.00</div>
+          <div class="stat-label">Valore Inventario</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">⚠️</div>
+        <div>
+          <div class="stat-value" id="lowStockCount">0</div>
+          <div class="stat-label">Scorte Basse (≤ 2)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra Ricerca, Filtri ed Esportazione -->
+    <section class="toolbar">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Cerca per titolo, autore o ISBN..." autocomplete="off">
+      </div>
+
+      <div class="filters-row">
+        <div class="filter-group">
+          <label for="categoryFilter">Genere:</label>
+          <select id="categoryFilter">
+            <option value="all">Tutti i generi</option>
+            <option value="Informatica">Informatica & Web</option>
+            <option value="Narrativa">Narrativa & Romanzi</option>
+            <option value="Saggistica">Saggistica</option>
+            <option value="Classici">Classici</option>
+            <option value="Scienza">Scienza & Natura</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="stockFilter">Disponibilità:</label>
+          <select id="stockFilter">
+            <option value="all">Tutte le disponibilità</option>
+            <option value="available">Disponibili (> 2 copie)</option>
+            <option value="low">In esaurimento (1-2 copie)</option>
+            <option value="out">Esauriti (0 copie)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="sortBy">Ordina per:</label>
+          <select id="sortBy">
+            <option value="title-asc">Titolo (A - Z)</option>
+            <option value="title-desc">Titolo (Z - A)</option>
+            <option value="price-asc">Prezzo (crescente)</option>
+            <option value="price-desc">Prezzo (decrescente)</option>
+            <option value="stock-desc">Quantità magazzino</option>
+          </select>
+        </div>
+
+        <div class="toolbar-actions">
+          <button id="exportCsvBtn" class="btn btn-outline" title="Scarica il catalogo in formato CSV compatibile con Excel">
+            📥 Esporta CSV
+          </button>
+          <button id="resetDataBtn" class="btn btn-text" title="Ripristina il catalogo dimostrativo">
+            ↺ Ripristina dati
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Griglia dei Libri -->
+    <section>
+      <div id="booksGrid" class="books-grid">
+        <!-- Generato dinamicamente via JavaScript -->
+      </div>
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">🔍</div>
+        <h3>Nessun libro trovato</h3>
+        <p>Prova a modificare i filtri di ricerca o la categoria selezionata.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modale Aggiungi / Modifica Libro -->
+  <div id="bookModal" class="modal hidden">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 id="modalTitle">Aggiungi Nuovo Libro al Catalogo</h2>
+        <button id="closeModalBtn" class="close-btn">&times;</button>
+      </div>
+      <form id="bookForm">
+        <input type="hidden" id="bookId">
+        
+        <div class="form-group">
+          <label for="bookTitle">Titolo del Libro *</label>
+          <input type="text" id="bookTitle" required placeholder="Es. Il nome della rosa">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookAuthor">Autore *</label>
+            <input type="text" id="bookAuthor" required placeholder="Es. Umberto Eco">
+          </div>
+          <div class="form-group">
+            <label for="bookCategory">Genere *</label>
+            <select id="bookCategory" required>
+              <option value="Narrativa">Narrativa & Romanzi</option>
+              <option value="Informatica">Informatica & Web</option>
+              <option value="Saggistica">Saggistica</option>
+              <option value="Classici">Classici</option>
+              <option value="Scienza">Scienza & Natura</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookIsbn">Codice ISBN-13 *</label>
+            <input type="text" id="bookIsbn" required placeholder="Es. 978-88-04-71234-5">
+          </div>
+          <div class="form-group">
+            <label for="bookYear">Anno Edizione</label>
+            <input type="number" id="bookYear" min="1900" max="2099" value="2024">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bookPrice">Prezzo di Vendita (€) *</label>
+            <input type="number" id="bookPrice" step="0.01" min="0" required placeholder="Es. 16.50">
+          </div>
+          <div class="form-group">
+            <label for="bookStock">Quantità a Magazzino *</label>
+            <input type="number" id="bookStock" min="0" required placeholder="Es. 5">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="cancelModalBtn" class="btn btn-secondary">Annulla</button>
+          <button type="submit" class="btn btn-primary">Salva nel Catalogo</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="container footer-content">
+      <p>Progetto realizzato da <strong>Valentyn Haidukov</strong> &bull; Sviluppatore Web & Gestione Dati</p>
+      <div class="footer-links">
+        <a href="https://github.com/HV94" target="_blank" rel="noopener">GitHub: @HV94</a>
+        <span>&bull;</span>
+        <a href="https://www.linkedin.com/in/valentyn-haidukov" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
