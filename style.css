@@ -1592,18 +1592,52 @@ body[data-theme="dark"] .receipt-modal-card {
 }
 
 @media print {
-  body * {
-    visibility: hidden;
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
   }
-  #receiptPaper, #receiptPaper * {
-    visibility: visible;
+  
+  /* Nascondi tutto il resto della pagina */
+  .top-bar, .app-header, main, .app-footer, .cart-drawer, .cart-overlay, #bookModal, #receiptOverlay, .receipt-actions {
+    display: none !important;
   }
+  
+  #receiptModal {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  
+  .receipt-modal-card {
+    position: static !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    background: transparent !important;
+  }
+  
   #receiptPaper {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    box-shadow: none;
-    border: none;
+    position: static !important;
+    width: 100% !important;
+    max-width: 380px !important;
+    margin: 1rem auto !important;
+    box-shadow: none !important;
+    border: 1px dashed #000000 !important;
+    padding: 1.25rem !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    page-break-inside: avoid !important;
   }
 }

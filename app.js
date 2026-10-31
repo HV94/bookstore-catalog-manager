@@ -5068,6 +5068,7 @@ const posSimulateBtn = document.getElementById("posSimulateBtn");
 const receiptModal = document.getElementById("receiptModal");
 const receiptOverlay = document.getElementById("receiptOverlay");
 const printReceiptBtn = document.getElementById("printReceiptBtn");
+const shareReceiptBtn = document.getElementById("shareReceiptBtn");
 const closeReceiptBtn = document.getElementById("closeReceiptBtn");
 const receiptDate = document.getElementById("receiptDate");
 const receiptItemsContainer = document.getElementById("receiptItemsContainer");
@@ -5203,8 +5204,17 @@ function setupCartListeners() {
   // Checkout
   checkoutBtn.addEventListener("click", processCheckout);
 
-  // Ricevuta
-  printReceiptBtn.addEventListener("click", () => window.print());
+  // Ricevuta (Stampa nativa e Salvataggio / Condivisione Mobile)
+  printReceiptBtn.addEventListener("click", () => {
+    try {
+      window.print();
+    } catch (e) {
+      shareReceipt();
+    }
+  });
+  if (shareReceiptBtn) {
+    shareReceiptBtn.addEventListener("click", shareReceipt);
+  }
   closeReceiptBtn.addEventListener("click", closeReceipt);
   receiptOverlay.addEventListener("click", closeReceipt);
 }
@@ -5491,6 +5501,51 @@ function showReceipt(total, cashGiven, change) {
   }
 
   receiptModal.classList.remove("hidden");
+}
+
+
+// Condividi / Salva Scontrino (Ottimizzato per Smartphone e In-App Browser)
+function shareReceipt() {
+  const dateStr = receiptDate ? receiptDate.textContent : new Date().toLocaleString("it-IT");
+  const totalStr = receiptTotalAmount ? receiptTotalAmount.textContent : "€ 0.00";
+  const payType = receiptPaymentType ? receiptPaymentType.textContent : "CONTANTI";
+  
+  let receiptText = "================================\n";
+  receiptText += "      BIBLIOTECH - LIBRERIA\n";
+  receiptText += "Punto Vendita: Città Sant'Angelo (PE)\n";
+  receiptText += `Data e Ora: ${dateStr}\n`;
+  receiptText += "Operatore: Valentyn Haidukov (Cassa 01)\n";
+  receiptText += "================================\n\n";
+  
+  const lines = document.querySelectorAll(".receipt-item-line");
+  lines.forEach(l => {
+    receiptText += l.innerText.replace(/\n/g, " ") + "\n";
+  });
+  
+  receiptText += "\n--------------------------------\n";
+  receiptText += `TOTALE COMPLESSIVO: ${totalStr}\n`;
+  receiptText += `PAGAMENTO: ${payType}\n`;
+  receiptText += "================================\n";
+  receiptText += "IVA assolta all'origine (art. 74 DPR 633/72)\n";
+  receiptText += "GRAZIE PER LA VISITA - ARRIVEDERCI\n";
+  receiptText += "https://hv94.github.io/bookstore-catalog-manager/\n";
+
+  if (navigator.share) {
+    navigator.share({
+      title: "Scontrino Fiscale BiblioTech",
+      text: receiptText
+    }).catch(() => {});
+  } else {
+    // Fallback: download txt file
+    const blob = new Blob([receiptText], { type: "text/plain;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = `scontrino_bibliotech_${Date.now()}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    alert("Scontrino digitale salvato con successo!");
+  }
 }
 
 function closeReceipt() {
