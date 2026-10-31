@@ -12,7 +12,8 @@
 ## 🌟 Funzionalità Principali
 
 ### 1. 📖 Catalogo & Schede Dettagliate
-- Visualizzazione a schede responsive (desktop, tablet e mobile).
+- Catalogo integrato di **500 volumi realistici** bilanciati equamente su 5 categorie (**100 libri diversi per ogni genere**: *Informatica & Web*, *Narrativa*, *Saggistica*, *Classici*, *Scienza*).
+- Visualizzazione a schede responsive ad altissime prestazioni con rendering ottimizzato via `DocumentFragment`.
 - Per ogni libro: **Titolo, Autore, Genere, Codice ISBN-13, Anno di pubblicazione, Prezzo di vendita e Copie a magazzino**.
 - Badge di stato scorte colorati in tempo reale:
   - 🟢 **Disponibile** (> 2 copie)

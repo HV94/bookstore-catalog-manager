@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BiblioTech | Gestione Catalogo & Magazzino Libri</title>
-  <meta name="description" content="Applicazione web per la catalogazione libri, gestione inventario scorte, ricerca in tempo reale ed esportazione dati.">
+  <title>BiblioTech | Gestione Catalogo & Magazzino Libreria</title>
+  <meta name="description" content="Applicazione web per la catalogazione libri, gestione inventario scorte, ricerca in tempo reale ed esportazione dati. Sviluppato da Valentyn Haidukov.">
 
   <!-- Open Graph / LinkedIn -->
   <meta property="og:type" content="website">
@@ -15,12 +15,35 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
   <meta property="og:image:type" content="image/png">
+  
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Top Bar Professionale Candidato -->
+  <aside class="top-bar" aria-label="Informazioni sviluppatore">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="badge-role">Retail & Bookstore Portfolio</span>
+        <span>Sviluppato da <strong>Valentyn Haidukov</strong> &bull; Perito Informatico (76/100) &bull; L. 68/99</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="https://hv94.github.io/curriculum-vitae/" target="_blank" rel="noopener noreferrer" class="link-social">
+          📄 CV & Portfolio
+        </a>
+        <a href="https://www.linkedin.com/in/valentyn-haidukov" target="_blank" rel="noopener noreferrer" class="link-social">
+          💼 LinkedIn
+        </a>
+        <a href="https://github.com/HV94/bookstore-catalog-manager" target="_blank" rel="noopener noreferrer" class="link-social">
+          🐙 Codice GitHub
+        </a>
+      </div>
+    </div>
+  </aside>
+
   <!-- Header Principale -->
   <header class="app-header">
     <div class="container header-content">
@@ -28,15 +51,15 @@
         <div class="brand-icon">📚</div>
         <div>
           <h1>BiblioTech</h1>
-          <p class="subtitle">Gestione Catalogo & Inventario Libreria</p>
+          <p class="subtitle">Gestione Catalogo & Inventario Magazzino Libreria</p>
         </div>
       </div>
       <div class="header-actions">
-        <button id="themeToggle" class="btn btn-secondary" title="Cambia tema">
+        <button id="themeToggle" class="btn btn-secondary" title="Cambia tema chiaro/scuro">
           <span id="themeIcon">🌙</span>
         </button>
         <button id="openModalBtn" class="btn btn-primary">
-          <span>+</span> Aggiungi Libro
+          <span>+</span> Aggiungi Nuovo Libro
         </button>
       </div>
     </div>
@@ -45,28 +68,28 @@
   <main class="container">
     <!-- Statistiche Rapide -->
     <section class="stats-grid">
-      <div class="stat-card">
+      <div class="stat-card card-stat-blue">
         <div class="stat-icon">📖</div>
         <div>
           <div class="stat-value" id="totalBooks">0</div>
           <div class="stat-label">Titoli a Catalogo</div>
         </div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card card-stat-indigo">
         <div class="stat-icon">📦</div>
         <div>
           <div class="stat-value" id="totalCopies">0</div>
           <div class="stat-label">Copie in Magazzino</div>
         </div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card card-stat-emerald">
         <div class="stat-icon">💶</div>
         <div>
           <div class="stat-value" id="totalValue">€ 0.00</div>
           <div class="stat-label">Valore Inventario</div>
         </div>
       </div>
-      <div class="stat-card">
+      <div class="stat-card card-stat-amber">
         <div class="stat-icon">⚠️</div>
         <div>
           <div class="stat-value" id="lowStockCount">0</div>
@@ -77,26 +100,37 @@
 
     <!-- Barra Ricerca, Filtri ed Esportazione -->
     <section class="toolbar">
+      
+      <!-- Filtri Rapidi Categoria (Pills) -->
+      <div class="category-pills" id="categoryPills">
+        <button class="cat-pill active" data-cat="all">📚 Tutti i Generi (500)</button>
+        <button class="cat-pill" data-cat="Informatica">💻 Informatica & Web (100)</button>
+        <button class="cat-pill" data-cat="Narrativa">📖 Narrativa (100)</button>
+        <button class="cat-pill" data-cat="Saggistica">🧠 Saggistica (100)</button>
+        <button class="cat-pill" data-cat="Classici">🏛️ Classici (100)</button>
+        <button class="cat-pill" data-cat="Scienza">🔬 Scienza & Natura (100)</button>
+      </div>
+
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="Cerca per titolo, autore o ISBN..." autocomplete="off">
+        <input type="text" id="searchInput" placeholder="Cerca per titolo, autore o codice ISBN-13..." autocomplete="off">
       </div>
 
       <div class="filters-row">
         <div class="filter-group">
           <label for="categoryFilter">Genere:</label>
           <select id="categoryFilter">
-            <option value="all">Tutti i generi</option>
-            <option value="Informatica">Informatica & Web</option>
-            <option value="Narrativa">Narrativa & Romanzi</option>
-            <option value="Saggistica">Saggistica</option>
-            <option value="Classici">Classici</option>
-            <option value="Scienza">Scienza & Natura</option>
+            <option value="all">Tutti i generi (500 volumi)</option>
+            <option value="Informatica">Informatica & Web (100)</option>
+            <option value="Narrativa">Narrativa & Romanzi (100)</option>
+            <option value="Saggistica">Saggistica (100)</option>
+            <option value="Classici">Classici (100)</option>
+            <option value="Scienza">Scienza & Natura (100)</option>
           </select>
         </div>
 
         <div class="filter-group">
-          <label for="stockFilter">Disponibilità:</label>
+          <label for="stockFilter">Disponibilità Scorte:</label>
           <select id="stockFilter">
             <option value="all">Tutte le disponibilità</option>
             <option value="available">Disponibili (> 2 copie)</option>
@@ -108,17 +142,17 @@
         <div class="filter-group">
           <label for="sortBy">Ordina per:</label>
           <select id="sortBy">
+            <option value="stock-desc">Quantità magazzino (Max &rarr; Min)</option>
             <option value="title-asc">Titolo (A - Z)</option>
             <option value="title-desc">Titolo (Z - A)</option>
             <option value="price-asc">Prezzo (crescente)</option>
             <option value="price-desc">Prezzo (decrescente)</option>
-            <option value="stock-desc">Quantità magazzino</option>
           </select>
         </div>
 
         <div class="toolbar-actions">
           <button id="exportCsvBtn" class="btn btn-outline" title="Scarica il catalogo in formato CSV compatibile con Excel">
-            📥 Esporta CSV
+            📥 Esporta Excel (CSV)
           </button>
           <button id="resetDataBtn" class="btn btn-text" title="Ripristina il catalogo dimostrativo">
             ↺ Ripristina dati
@@ -203,14 +237,30 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer con Altri Progetti del Candidato -->
   <footer class="app-footer">
     <div class="container footer-content">
-      <p>Progetto realizzato da <strong>Valentyn Haidukov</strong> &bull; Sviluppatore Web & Gestione Dati</p>
-      <div class="footer-links">
-        <a href="https://github.com/HV94" target="_blank" rel="noopener">GitHub: @HV94</a>
-        <span>&bull;</span>
-        <a href="https://www.linkedin.com/in/valentyn-haidukov" target="_blank" rel="noopener">LinkedIn</a>
+      <div class="other-projects">
+        <span class="other-projects-title">Altri progetti di Valentyn Haidukov:</span>
+        <div class="project-pills">
+          <a href="https://hv94.github.io/retail-store-catalog/" target="_blank" class="project-pill-link">
+            🛒 RetailHub (Megastore & Cassa POS)
+          </a>
+          <a href="https://hv94.github.io/tech-store-catalog/" target="_blank" class="project-pill-link">
+            💻 TechStore (Elettronica & Preventivi)
+          </a>
+          <a href="https://hv94.github.io/curriculum-vitae/" target="_blank" class="project-pill-link">
+            📄 Curriculum Vitae Ufficiale
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Progetto realizzato da <strong>Valentyn Haidukov</strong> &bull; Perito Informatico &bull; Categorie Protette (L. 68/99)</p>
+        <div class="footer-links">
+          <a href="https://github.com/HV94" target="_blank" rel="noopener">GitHub: @HV94</a>
+          <span>&bull;</span>
+          <a href="https://www.linkedin.com/in/valentyn-haidukov" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
       </div>
     </div>
   </footer>
