@@ -58,6 +58,9 @@
         <button id="themeToggle" class="btn btn-secondary" title="Cambia tema chiaro/scuro">
           <span id="themeIcon">🌙</span>
         </button>
+        <button id="openCartBtn" class="btn btn-cart" title="Apri Cassa e Carrello Vendite">
+          🛒 Cassa / Carrello <span id="cartCountBadge" class="cart-badge">0</span>
+        </button>
         <button id="openModalBtn" class="btn btn-primary">
           <span>+</span> Aggiungi Nuovo Libro
         </button>
@@ -234,6 +237,173 @@
           <button type="submit" class="btn btn-primary">Salva nel Catalogo</button>
         </div>
       </form>
+    </div>
+  </div>
+
+
+  <!-- Carrello & Cassa POS Slide-out Drawer -->
+  <div id="cartOverlay" class="cart-overlay hidden"></div>
+  <aside id="cartDrawer" class="cart-drawer hidden" aria-label="Cassa vendite e carrello">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <span class="cart-icon">🛒</span>
+        <div>
+          <h3>Cassa & Registratore POS</h3>
+          <p class="cart-subtitle">Punto Vendita Libreria BiblioTech</p>
+        </div>
+      </div>
+      <button id="closeCartBtn" class="close-btn" title="Chiudi cassa">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      <!-- Stato Carrello Vuoto -->
+      <div id="cartEmptyState" class="cart-empty-state">
+        <div class="cart-empty-icon">🛒</div>
+        <h4>La cassa è vuota</h4>
+        <p>Aggiungi uno o più libri dal catalogo per avviare una vendita al banco.</p>
+      </div>
+
+      <!-- Elenco Libri nel Carrello -->
+      <div id="cartItemsList" class="cart-items-list hidden">
+        <!-- Generato dinamicamente via JS -->
+      </div>
+    </div>
+
+    <!-- Footer Cassa & Pagamento -->
+    <div id="cartDrawerFooter" class="cart-drawer-footer hidden">
+      <div class="cart-totals">
+        <div class="cart-total-row">
+          <span>Articoli totali:</span>
+          <strong id="cartTotalItems">0 volumi</strong>
+        </div>
+        <div class="cart-total-row">
+          <span>IVA Editoria (4% assolta):</span>
+          <span id="cartIva">€ 0.00</span>
+        </div>
+        <div class="cart-total-row grand-total">
+          <span>TOTALE DA PAGARE:</span>
+          <strong id="cartGrandTotal">€ 0.00</strong>
+        </div>
+      </div>
+
+      <!-- Scelta Metodo di Pagamento -->
+      <div class="payment-method-section">
+        <label class="section-label">Metodo di Pagamento:</label>
+        <div class="payment-options">
+          <button type="button" class="payment-opt-btn active" id="payMethodCash" data-method="cash">
+            💵 Contanti
+          </button>
+          <button type="button" class="payment-opt-btn" id="payMethodPos" data-method="pos">
+            💳 POS / Carta
+          </button>
+        </div>
+
+        <!-- Sezione Contanti con Calcolo Resto -->
+        <div id="cashPaymentBox" class="payment-details-box">
+          <label for="cashReceivedInput">Contante ricevuto dal cliente (€):</label>
+          <div class="cash-input-row">
+            <span class="currency-prefix">€</span>
+            <input type="number" id="cashReceivedInput" step="0.50" min="0" placeholder="Es. 50.00">
+          </div>
+          <div class="cash-quick-btns">
+            <button type="button" class="btn-cash-quick" id="cashExactBtn">Esatto</button>
+            <button type="button" class="btn-cash-quick" data-amount="10">€ 10</button>
+            <button type="button" class="btn-cash-quick" data-amount="20">€ 20</button>
+            <button type="button" class="btn-cash-quick" data-amount="50">€ 50</button>
+            <button type="button" class="btn-cash-quick" data-amount="100">€ 100</button>
+          </div>
+          <div id="changeDueBox" class="change-box info">
+            <span>Resto dovuto al cliente:</span>
+            <strong id="changeDueValue">€ 0.00</strong>
+          </div>
+        </div>
+
+        <!-- Sezione POS Elettronico -->
+        <div id="posPaymentBox" class="payment-details-box hidden">
+          <div class="pos-status-box">
+            <div class="pos-terminal-icon">📟</div>
+            <div class="pos-terminal-info">
+              <div class="pos-status-text" id="posStatusText">Pronto per inserimento carta o Contactless...</div>
+              <div class="pos-circuits">Circuito: Bancomat &bull; Visa &bull; Mastercard &bull; Apple Pay</div>
+            </div>
+          </div>
+          <button type="button" id="posSimulateBtn" class="btn btn-pos-action">
+            📶 Avvicina Carta / Simula Transazione POS
+          </button>
+        </div>
+      </div>
+
+      <!-- Pulsante Emetti Scontrino -->
+      <div class="cart-actions-bottom">
+        <button id="checkoutBtn" class="btn btn-checkout">
+          ✅ Completa Vendita & Scarica Scorte
+        </button>
+        <button id="clearCartBtn" class="btn btn-clear-cart" title="Azzera cassa">
+          Svuota Cassa
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Modale Scontrino Fiscale / Ricevuta Vendita -->
+  <div id="receiptModal" class="modal hidden">
+    <div class="modal-overlay" id="receiptOverlay"></div>
+    <div class="modal-card receipt-modal-card">
+      <div class="receipt-paper" id="receiptPaper">
+        <div class="receipt-header">
+          <div class="receipt-logo">📚 BIBLIOTECH</div>
+          <div class="receipt-store">Punto Vendita Libreria & Editoria</div>
+          <div class="receipt-address">Via Vestina, 120 &bull; Città Sant'Angelo (PE)</div>
+          <div class="receipt-piva">P.IVA: IT09876543210 &bull; Tel. 085 9691234</div>
+          <div class="receipt-divider">================================</div>
+          <div class="receipt-meta">
+            <div>DOC. COMMERCIALE DI VENDITA</div>
+            <div id="receiptDate">31/10/2026 - 10:35</div>
+            <div>OPERATORE: Valentyn Haidukov (Cassa 01)</div>
+          </div>
+          <div class="receipt-divider">--------------------------------</div>
+        </div>
+
+        <div class="receipt-items" id="receiptItemsContainer">
+          <!-- Righe scontrino generate via JS -->
+        </div>
+
+        <div class="receipt-totals">
+          <div class="receipt-divider">--------------------------------</div>
+          <div class="receipt-row bold">
+            <span>TOTALE COMPLESSIVO:</span>
+            <span id="receiptTotalAmount">€ 0.00</span>
+          </div>
+          <div class="receipt-row" id="receiptPaymentRow">
+            <span>PAGAMENTO:</span>
+            <span id="receiptPaymentType">CONTANTI</span>
+          </div>
+          <div class="receipt-row" id="receiptCashRow">
+            <span>RICEVUTO:</span>
+            <span id="receiptCashReceived">€ 0.00</span>
+          </div>
+          <div class="receipt-row bold" id="receiptChangeRow">
+            <span>RESTO:</span>
+            <span id="receiptChangeAmount">€ 0.00</span>
+          </div>
+          <div class="receipt-row" id="receiptPosRow">
+            <span>CODICE AUTH POS:</span>
+            <span id="receiptPosAuth">#94821</span>
+          </div>
+          <div class="receipt-divider">================================</div>
+          <div class="receipt-vat-note">
+            IVA assolta all'origine dall'editore ai sensi dell'art. 74, primo comma, lettera c), D.P.R. 633/1972
+          </div>
+          <div class="receipt-barcode">||||| ||||||| |||| |||||||| |||||</div>
+          <div class="receipt-thanks">GRAZIE PER LA VISITA &bull; ARRIVEDERCI</div>
+          <div class="receipt-thanks">www.hv94.github.io/bookstore-catalog-manager</div>
+        </div>
+      </div>
+
+      <div class="receipt-actions">
+        <button id="printReceiptBtn" class="btn btn-primary">🖨️ Stampa Scontrino</button>
+        <button id="closeReceiptBtn" class="btn btn-secondary">✨ Nuova Vendita</button>
+      </div>
     </div>
   </div>
 

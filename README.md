@@ -32,15 +32,24 @@
 - **Eliminazione:** con richiesta di conferma di sicurezza.
 - **Persistenza:** tutti i dati modificati rimangono salvati nel browser tramite `localStorage`.
 
-### 4. 📊 Dashboard Statistiche & Esportazione Dati
+### 4. 🛒 Cassa Punto Vendita POS, Pagamenti & Scarico Scorte
+- **Carrello Vendite Slide-out:** aggiunta rapida dei libri direttamente dalla scheda catalogo (`🛒 Aggiungi alla Cassa`).
+- **Controllo Scorte in tempo reale:** impossibilità di acquistare più copie di quelle disponibili; disattivazione automatica per i titoli esauriti.
+- **Doppio Metodo di Pagamento:**
+  - 💵 **Contanti:** calcolatore automatico di resto in tempo reale con tagli rapidi (€10, €20, €50, €100, cifra esatta) e alert in caso di contante insufficiente.
+  - 💳 **POS Elettronico:** simulazione di transazione bancaria contactless/chip (Bancomat, Visa, Mastercard) con generazione codice AUTH.
+- **Scarico Automatico Scorte:** alla conferma del pagamento, il magazzino riduce automaticamente la disponibilità dei libri venduti e aggiorna tutte le metriche.
+- **Scontrino Fiscale Elettronico:** emissione automatica del documento commerciale di vendita con dettagli articoli, subtotale, IVA 4% editoria (art. 74 DPR 633/72) e pulsante per la stampa termica (`window.print()`).
+
+### 5. 📊 Dashboard Statistiche & Esportazione Dati
 - Contatori in tempo reale su:
-  - Numero totale di titoli a catalogo.
-  - Numero totale di copie fisiche a magazzino.
-  - Valore economico complessivo dell'inventario (€).
-  - Conteggio articoli con scorta in esaurimento.
+  - Numero totale di titoli a catalogo (500).
+  - Numero totale di copie fisiche a magazzino (3.169).
+  - Valore economico complessivo dell'inventario (€ 58.332,30).
+  - Conteggio articoli con scorta in esaurimento (148 volumi).
 - **Esportazione CSV:** pulsante per scaricare l'intero inventario in formato `.csv` (codifica UTF-8 con BOM) perfettamente compatibile con **Microsoft Excel** e **Fogli Google**.
 
-### 5. 🌓 Esperienza Utente & Accessibilità
+### 6. 🌓 Esperienza Utente & Accessibilità
 - Supporto nativo per **Tema Chiaro (Light)** e **Tema Scuro (Dark)** con memorizzazione delle preferenze.
 - Layout completamente responsive progettato mobile-first.
 

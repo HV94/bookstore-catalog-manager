@@ -1,7 +1,7 @@
 /**
- * BiblioTech - Bookstore & Catalog Manager
+ * BiblioTech - Bookstore & Catalog Manager + Cassa POS
  * Autore: Valentyn Haidukov (HV94)
- * Descrizione: Gestione interattiva di un catalogo libri, inventario scorte, ricerca in tempo reale ed esportazione dati.
+ * Descrizione: Gestione completa di catalogo libri, inventario scorte, carrello vendite, cassa contanti/POS e scontrino fiscale.
  */
 
 // Catalogo iniziale dimostrativo (500 volumi: 100 per genere)
@@ -134,7 +134,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0013-4",
     "year": 2020,
     "price": 24.0,
-    "stock": 12
+    "stock": 1
   },
   {
     "id": "book-14",
@@ -234,7 +234,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0023-1",
     "year": 2021,
     "price": 35.0,
-    "stock": 14
+    "stock": 2
   },
   {
     "id": "book-24",
@@ -304,7 +304,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0030-5",
     "year": 2021,
     "price": 46.0,
-    "stock": 12
+    "stock": 1
   },
   {
     "id": "book-31",
@@ -314,7 +314,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0031-6",
     "year": 2020,
     "price": 39.0,
-    "stock": 10
+    "stock": 2
   },
   {
     "id": "book-32",
@@ -344,7 +344,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0034-4",
     "year": 2020,
     "price": 31.0,
-    "stock": 11
+    "stock": 1
   },
   {
     "id": "book-35",
@@ -354,7 +354,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0035-9",
     "year": 2021,
     "price": 24.0,
-    "stock": 9
+    "stock": 1
   },
   {
     "id": "book-36",
@@ -444,7 +444,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0044-5",
     "year": 2018,
     "price": 26.0,
-    "stock": 15
+    "stock": 1
   },
   {
     "id": "book-45",
@@ -484,7 +484,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0048-4",
     "year": 2018,
     "price": 31.0,
-    "stock": 4
+    "stock": 1
   },
   {
     "id": "book-49",
@@ -634,7 +634,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0063-7",
     "year": 2020,
     "price": 27.0,
-    "stock": 11
+    "stock": 1
   },
   {
     "id": "book-64",
@@ -734,7 +734,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0073-1",
     "year": 2022,
     "price": 48.0,
-    "stock": 6
+    "stock": 1
   },
   {
     "id": "book-74",
@@ -754,7 +754,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0075-0",
     "year": 2020,
     "price": 33.0,
-    "stock": 10
+    "stock": 2
   },
   {
     "id": "book-76",
@@ -824,7 +824,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0082-1",
     "year": 2018,
     "price": 36.0,
-    "stock": 11
+    "stock": 2
   },
   {
     "id": "book-83",
@@ -894,7 +894,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0089-8",
     "year": 2021,
     "price": 36.0,
-    "stock": 14
+    "stock": 1
   },
   {
     "id": "book-90",
@@ -904,7 +904,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0090-2",
     "year": 2021,
     "price": 39.0,
-    "stock": 10
+    "stock": 2
   },
   {
     "id": "book-91",
@@ -994,7 +994,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-503-0099-1",
     "year": 2019,
     "price": 29.0,
-    "stock": 12
+    "stock": 2
   },
   {
     "id": "book-100",
@@ -1024,7 +1024,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0102-3",
     "year": 2016,
     "price": 11.0,
-    "stock": 8
+    "stock": 2
   },
   {
     "id": "book-103",
@@ -1114,7 +1114,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0111-8",
     "year": 2014,
     "price": 12.0,
-    "stock": 15
+    "stock": 1
   },
   {
     "id": "book-112",
@@ -1234,7 +1234,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0123-6",
     "year": 2018,
     "price": 12.5,
-    "stock": 11
+    "stock": 1
   },
   {
     "id": "book-124",
@@ -1254,7 +1254,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0125-2",
     "year": 2017,
     "price": 10.5,
-    "stock": 14
+    "stock": 1
   },
   {
     "id": "book-126",
@@ -1314,7 +1314,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0131-8",
     "year": 2014,
     "price": 19.5,
-    "stock": 8
+    "stock": 1
   },
   {
     "id": "book-132",
@@ -1334,7 +1334,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0133-2",
     "year": 2019,
     "price": 13.5,
-    "stock": 6
+    "stock": 1
   },
   {
     "id": "book-134",
@@ -1344,7 +1344,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0134-2",
     "year": 2018,
     "price": 10.0,
-    "stock": 15
+    "stock": 2
   },
   {
     "id": "book-135",
@@ -1424,7 +1424,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0142-3",
     "year": 2019,
     "price": 10.0,
-    "stock": 13
+    "stock": 1
   },
   {
     "id": "book-143",
@@ -1434,7 +1434,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0143-1",
     "year": 2018,
     "price": 9.5,
-    "stock": 7
+    "stock": 1
   },
   {
     "id": "book-144",
@@ -1444,7 +1444,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0144-5",
     "year": 2017,
     "price": 10.0,
-    "stock": 7
+    "stock": 2
   },
   {
     "id": "book-145",
@@ -1504,7 +1504,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0150-6",
     "year": 2018,
     "price": 9.0,
-    "stock": 8
+    "stock": 2
   },
   {
     "id": "book-151",
@@ -1534,7 +1534,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0153-6",
     "year": 2018,
     "price": 11.5,
-    "stock": 14
+    "stock": 1
   },
   {
     "id": "book-154",
@@ -1554,7 +1554,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0155-3",
     "year": 2018,
     "price": 13.0,
-    "stock": 14
+    "stock": 2
   },
   {
     "id": "book-156",
@@ -1604,7 +1604,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0160-8",
     "year": 2018,
     "price": 13.5,
-    "stock": 7
+    "stock": 1
   },
   {
     "id": "book-161",
@@ -1644,7 +1644,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0164-4",
     "year": 2018,
     "price": 12.5,
-    "stock": 7
+    "stock": 1
   },
   {
     "id": "book-165",
@@ -1744,7 +1744,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0174-1",
     "year": 2019,
     "price": 16.5,
-    "stock": 12
+    "stock": 2
   },
   {
     "id": "book-175",
@@ -1774,7 +1774,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0177-0",
     "year": 2018,
     "price": 12.5,
-    "stock": 5
+    "stock": 2
   },
   {
     "id": "book-178",
@@ -1804,7 +1804,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0180-8",
     "year": 2018,
     "price": 12.0,
-    "stock": 14
+    "stock": 1
   },
   {
     "id": "book-181",
@@ -1894,7 +1894,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0189-3",
     "year": 2018,
     "price": 16.5,
-    "stock": 15
+    "stock": 1
   },
   {
     "id": "book-190",
@@ -1904,7 +1904,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0190-8",
     "year": 2019,
     "price": 9.5,
-    "stock": 7
+    "stock": 1
   },
   {
     "id": "book-191",
@@ -1974,7 +1974,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0197-7",
     "year": 2019,
     "price": 12.5,
-    "stock": 11
+    "stock": 2
   },
   {
     "id": "book-198",
@@ -1994,7 +1994,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-04-0199-9",
     "year": 2018,
     "price": 10.0,
-    "stock": 15
+    "stock": 2
   },
   {
     "id": "book-200",
@@ -2054,7 +2054,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0205-7",
     "year": 2014,
     "price": 15.0,
-    "stock": 9
+    "stock": 1
   },
   {
     "id": "book-206",
@@ -2094,7 +2094,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0209-0",
     "year": 2015,
     "price": 16.5,
-    "stock": 11
+    "stock": 2
   },
   {
     "id": "book-210",
@@ -2154,7 +2154,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0215-4",
     "year": 2017,
     "price": 13.0,
-    "stock": 9
+    "stock": 1
   },
   {
     "id": "book-216",
@@ -2184,7 +2184,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0218-5",
     "year": 2023,
     "price": 21.0,
-    "stock": 3
+    "stock": 2
   },
   {
     "id": "book-219",
@@ -2194,7 +2194,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0219-0",
     "year": 2019,
     "price": 18.0,
-    "stock": 4
+    "stock": 1
   },
   {
     "id": "book-220",
@@ -2214,7 +2214,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0221-2",
     "year": 2018,
     "price": 22.0,
-    "stock": 12
+    "stock": 2
   },
   {
     "id": "book-222",
@@ -2264,7 +2264,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0226-9",
     "year": 2016,
     "price": 10.5,
-    "stock": 4
+    "stock": 2
   },
   {
     "id": "book-227",
@@ -2374,7 +2374,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0237-7",
     "year": 2022,
     "price": 22.0,
-    "stock": 8
+    "stock": 2
   },
   {
     "id": "book-238",
@@ -2494,7 +2494,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0249-3",
     "year": 2017,
     "price": 14.0,
-    "stock": 11
+    "stock": 1
   },
   {
     "id": "book-250",
@@ -2554,7 +2554,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0255-5",
     "year": 2018,
     "price": 13.0,
-    "stock": 12
+    "stock": 2
   },
   {
     "id": "book-256",
@@ -2574,7 +2574,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0257-8",
     "year": 2018,
     "price": 15.0,
-    "stock": 14
+    "stock": 1
   },
   {
     "id": "book-258",
@@ -2644,7 +2644,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0264-3",
     "year": 2020,
     "price": 9.0,
-    "stock": 4
+    "stock": 1
   },
   {
     "id": "book-265",
@@ -2654,7 +2654,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0265-2",
     "year": 2019,
     "price": 7.5,
-    "stock": 8
+    "stock": 2
   },
   {
     "id": "book-266",
@@ -2684,7 +2684,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0268-2",
     "year": 2018,
     "price": 12.0,
-    "stock": 14
+    "stock": 2
   },
   {
     "id": "book-269",
@@ -2844,7 +2844,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0284-1",
     "year": 2018,
     "price": 18.0,
-    "stock": 7
+    "stock": 2
   },
   {
     "id": "book-285",
@@ -2894,7 +2894,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0289-7",
     "year": 2018,
     "price": 14.0,
-    "stock": 14
+    "stock": 1
   },
   {
     "id": "book-290",
@@ -2924,7 +2924,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0292-6",
     "year": 2020,
     "price": 14.5,
-    "stock": 6
+    "stock": 1
   },
   {
     "id": "book-293",
@@ -2994,7 +2994,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-452-0299-1",
     "year": 2018,
     "price": 13.5,
-    "stock": 10
+    "stock": 2
   },
   {
     "id": "book-300",
@@ -3074,7 +3074,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0307-1",
     "year": 2021,
     "price": 11.0,
-    "stock": 10
+    "stock": 2
   },
   {
     "id": "book-308",
@@ -3134,7 +3134,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0313-1",
     "year": 2020,
     "price": 10.5,
-    "stock": 8
+    "stock": 1
   },
   {
     "id": "book-314",
@@ -3164,7 +3164,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0316-3",
     "year": 2020,
     "price": 8.5,
-    "stock": 3
+    "stock": 1
   },
   {
     "id": "book-317",
@@ -3224,7 +3224,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0322-8",
     "year": 2019,
     "price": 9.0,
-    "stock": 3
+    "stock": 1
   },
   {
     "id": "book-323",
@@ -3274,7 +3274,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0327-3",
     "year": 2020,
     "price": 12.0,
-    "stock": 10
+    "stock": 1
   },
   {
     "id": "book-328",
@@ -3314,7 +3314,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0331-8",
     "year": 2019,
     "price": 8.0,
-    "stock": 15
+    "stock": 1
   },
   {
     "id": "book-332",
@@ -3394,7 +3394,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0339-6",
     "year": 2021,
     "price": 9.5,
-    "stock": 15
+    "stock": 2
   },
   {
     "id": "book-340",
@@ -3454,7 +3454,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0345-1",
     "year": 2021,
     "price": 8.5,
-    "stock": 10
+    "stock": 1
   },
   {
     "id": "book-346",
@@ -3464,7 +3464,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0346-0",
     "year": 2019,
     "price": 16.0,
-    "stock": 10
+    "stock": 1
   },
   {
     "id": "book-347",
@@ -3474,7 +3474,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0347-2",
     "year": 2019,
     "price": 8.5,
-    "stock": 9
+    "stock": 1
   },
   {
     "id": "book-348",
@@ -3504,7 +3504,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0350-8",
     "year": 2019,
     "price": 14.0,
-    "stock": 13
+    "stock": 2
   },
   {
     "id": "book-351",
@@ -3524,7 +3524,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0352-9",
     "year": 2020,
     "price": 10.5,
-    "stock": 3
+    "stock": 1
   },
   {
     "id": "book-353",
@@ -3584,7 +3584,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0358-5",
     "year": 2021,
     "price": 9.0,
-    "stock": 7
+    "stock": 2
   },
   {
     "id": "book-359",
@@ -3754,7 +3754,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0375-0",
     "year": 2019,
     "price": 13.5,
-    "stock": 12
+    "stock": 2
   },
   {
     "id": "book-376",
@@ -3854,7 +3854,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0385-3",
     "year": 2020,
     "price": 10.5,
-    "stock": 5
+    "stock": 1
   },
   {
     "id": "book-386",
@@ -3914,7 +3914,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-07-0391-6",
     "year": 2021,
     "price": 10.0,
-    "stock": 6
+    "stock": 2
   },
   {
     "id": "book-392",
@@ -4134,7 +4134,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0413-5",
     "year": 2021,
     "price": 40.0,
-    "stock": 13
+    "stock": 1
   },
   {
     "id": "book-414",
@@ -4334,7 +4334,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0433-0",
     "year": 2017,
     "price": 16.0,
-    "stock": 13
+    "stock": 1
   },
   {
     "id": "book-434",
@@ -4394,7 +4394,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0439-8",
     "year": 2020,
     "price": 15.0,
-    "stock": 12
+    "stock": 2
   },
   {
     "id": "book-440",
@@ -4434,7 +4434,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0443-8",
     "year": 2018,
     "price": 19.0,
-    "stock": 13
+    "stock": 1
   },
   {
     "id": "book-444",
@@ -4534,7 +4534,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0453-8",
     "year": 2020,
     "price": 17.5,
-    "stock": 11
+    "stock": 1
   },
   {
     "id": "book-454",
@@ -4564,7 +4564,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0456-0",
     "year": 2017,
     "price": 18.5,
-    "stock": 14
+    "stock": 2
   },
   {
     "id": "book-457",
@@ -4594,7 +4594,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0459-7",
     "year": 2018,
     "price": 14.0,
-    "stock": 13
+    "stock": 2
   },
   {
     "id": "book-460",
@@ -4644,7 +4644,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0464-8",
     "year": 2019,
     "price": 13.0,
-    "stock": 13
+    "stock": 1
   },
   {
     "id": "book-465",
@@ -4714,7 +4714,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0471-6",
     "year": 2017,
     "price": 16.0,
-    "stock": 6
+    "stock": 2
   },
   {
     "id": "book-472",
@@ -4894,7 +4894,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0489-8",
     "year": 2019,
     "price": 15.0,
-    "stock": 11
+    "stock": 1
   },
   {
     "id": "book-490",
@@ -4944,7 +4944,7 @@ const DEFAULT_BOOKS = [
     "isbn": "978-88-459-0494-6",
     "year": 2019,
     "price": 15.0,
-    "stock": 14
+    "stock": 1
   },
   {
     "id": "book-495",
@@ -5010,8 +5010,11 @@ const DEFAULT_BOOKS = [
 
 // Stato dell'applicazione
 let books = [];
+let cart = [];
+let currentPaymentMethod = "cash";
+let posSimulatedAuth = null;
 
-// Elementi DOM
+// Elementi DOM Principali
 const booksGrid = document.getElementById("booksGrid");
 const emptyState = document.getElementById("emptyState");
 const searchInput = document.getElementById("searchInput");
@@ -5025,7 +5028,7 @@ const totalCopiesEl = document.getElementById("totalCopies");
 const totalValueEl = document.getElementById("totalValue");
 const lowStockCountEl = document.getElementById("lowStockCount");
 
-// Modale
+// Modale Aggiungi/Modifica Libro
 const bookModal = document.getElementById("bookModal");
 const openModalBtn = document.getElementById("openModalBtn");
 const closeModalBtn = document.getElementById("closeModalBtn");
@@ -5033,6 +5036,49 @@ const cancelModalBtn = document.getElementById("cancelModalBtn");
 const modalOverlay = document.getElementById("modalOverlay");
 const bookForm = document.getElementById("bookForm");
 const modalTitle = document.getElementById("modalTitle");
+
+// Carrello & Cassa POS
+const cartDrawer = document.getElementById("cartDrawer");
+const cartOverlay = document.getElementById("cartOverlay");
+const openCartBtn = document.getElementById("openCartBtn");
+const closeCartBtn = document.getElementById("closeCartBtn");
+const cartCountBadge = document.getElementById("cartCountBadge");
+const cartItemsList = document.getElementById("cartItemsList");
+const cartEmptyState = document.getElementById("cartEmptyState");
+const cartDrawerFooter = document.getElementById("cartDrawerFooter");
+const cartTotalItems = document.getElementById("cartTotalItems");
+const cartIva = document.getElementById("cartIva");
+const cartGrandTotal = document.getElementById("cartGrandTotal");
+const clearCartBtn = document.getElementById("clearCartBtn");
+const checkoutBtn = document.getElementById("checkoutBtn");
+
+// Metodi di Pagamento
+const payMethodCash = document.getElementById("payMethodCash");
+const payMethodPos = document.getElementById("payMethodPos");
+const cashPaymentBox = document.getElementById("cashPaymentBox");
+const posPaymentBox = document.getElementById("posPaymentBox");
+const cashReceivedInput = document.getElementById("cashReceivedInput");
+const changeDueBox = document.getElementById("changeDueBox");
+const changeDueValue = document.getElementById("changeDueValue");
+const cashExactBtn = document.getElementById("cashExactBtn");
+const posStatusText = document.getElementById("posStatusText");
+const posSimulateBtn = document.getElementById("posSimulateBtn");
+
+// Modale Scontrino Fiscale
+const receiptModal = document.getElementById("receiptModal");
+const receiptOverlay = document.getElementById("receiptOverlay");
+const printReceiptBtn = document.getElementById("printReceiptBtn");
+const closeReceiptBtn = document.getElementById("closeReceiptBtn");
+const receiptDate = document.getElementById("receiptDate");
+const receiptItemsContainer = document.getElementById("receiptItemsContainer");
+const receiptTotalAmount = document.getElementById("receiptTotalAmount");
+const receiptPaymentType = document.getElementById("receiptPaymentType");
+const receiptCashRow = document.getElementById("receiptCashRow");
+const receiptCashReceived = document.getElementById("receiptCashReceived");
+const receiptChangeRow = document.getElementById("receiptChangeRow");
+const receiptChangeAmount = document.getElementById("receiptChangeAmount");
+const receiptPosRow = document.getElementById("receiptPosRow");
+const receiptPosAuth = document.getElementById("receiptPosAuth");
 
 // Altri pulsanti
 const exportCsvBtn = document.getElementById("exportCsvBtn");
@@ -5045,16 +5091,19 @@ document.addEventListener("DOMContentLoaded", () => {
   loadTheme();
   loadBooks();
   setupEventListeners();
+  setupCartListeners();
+  updateCartUI();
   render();
 });
 
-// Carica libri da LocalStorage o Default
+// Carica libri da LocalStorage con aggiornamento versione (v3 = 500 libri calibrati)
 function loadBooks() {
+  const version = localStorage.getItem("bibliotech_version");
   const saved = localStorage.getItem("bibliotech_books");
-  if (saved) {
+  
+  if (version === "3.0" && saved) {
     try {
       books = JSON.parse(saved);
-      // Se il catalogo salvato ha meno di 400 libri, carica automaticamente i 500 libri completi
       if (!Array.isArray(books) || books.length < 400) {
         books = [...DEFAULT_BOOKS];
         saveBooks();
@@ -5064,8 +5113,10 @@ function loadBooks() {
       saveBooks();
     }
   } else {
+    // Caricamento iniziale o aggiornamento a v3.0 con 500 libri e scorte calibrate
     books = [...DEFAULT_BOOKS];
     saveBooks();
+    localStorage.setItem("bibliotech_version", "3.0");
   }
 }
 
@@ -5074,7 +5125,7 @@ function saveBooks() {
   localStorage.setItem("bibliotech_books", JSON.stringify(books));
 }
 
-// Configurazione Event Listener
+// Configurazione Event Listener Principali
 function setupEventListeners() {
   // Ricerca e Filtri
   searchInput.addEventListener("input", render);
@@ -5098,10 +5149,11 @@ function setupEventListeners() {
     });
     render();
   });
+
   stockFilter.addEventListener("change", render);
   sortBy.addEventListener("change", render);
 
-  // Modale
+  // Modale Libro
   openModalBtn.addEventListener("click", () => openModal());
   closeModalBtn.addEventListener("click", closeModal);
   cancelModalBtn.addEventListener("click", closeModal);
@@ -5118,7 +5170,334 @@ function setupEventListeners() {
   themeToggle.addEventListener("click", toggleTheme);
 }
 
-// Render generale
+// Configurazione Event Listener Cassa & Carrello POS
+function setupCartListeners() {
+  openCartBtn.addEventListener("click", openCart);
+  closeCartBtn.addEventListener("click", closeCart);
+  cartOverlay.addEventListener("click", closeCart);
+  clearCartBtn.addEventListener("click", clearCart);
+
+  // Metodi pagamento
+  payMethodCash.addEventListener("click", () => setPaymentMethod("cash"));
+  payMethodPos.addEventListener("click", () => setPaymentMethod("pos"));
+
+  // Input contanti
+  cashReceivedInput.addEventListener("input", calculateCashChange);
+  cashExactBtn.addEventListener("click", () => {
+    const total = getCartTotal();
+    cashReceivedInput.value = total.toFixed(2);
+    calculateCashChange();
+  });
+
+  // Pulsanti rapidi contanti
+  document.querySelectorAll(".btn-cash-quick[data-amount]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      cashReceivedInput.value = Number(btn.dataset.amount).toFixed(2);
+      calculateCashChange();
+    });
+  });
+
+  // Simulazione POS
+  posSimulateBtn.addEventListener("click", simulatePosPayment);
+
+  // Checkout
+  checkoutBtn.addEventListener("click", processCheckout);
+
+  // Ricevuta
+  printReceiptBtn.addEventListener("click", () => window.print());
+  closeReceiptBtn.addEventListener("click", closeReceipt);
+  receiptOverlay.addEventListener("click", closeReceipt);
+}
+
+// Apertura / Chiusura Cassa
+function openCart() {
+  cartDrawer.classList.remove("hidden");
+  cartOverlay.classList.remove("hidden");
+  calculateCashChange();
+}
+
+function closeCart() {
+  cartDrawer.classList.add("hidden");
+  cartOverlay.classList.add("hidden");
+}
+
+// Totale Carrello Corrente
+function getCartTotal() {
+  return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+}
+
+// Aggiungi Libro al Carrello Cassa
+window.addToCart = function(id) {
+  const book = books.find(b => b.id === id);
+  if (!book) return;
+
+  if (book.stock <= 0) {
+    alert(`"${book.title}" è esaurito a magazzino!`);
+    return;
+  }
+
+  const existing = cart.find(item => item.id === id);
+  if (existing) {
+    if (existing.quantity < book.stock) {
+      existing.quantity += 1;
+    } else {
+      alert(`Hai già inserito nella cassa tutte le ${book.stock} copie disponibili di "${book.title}"!`);
+      return;
+    }
+  } else {
+    cart.push({
+      id: book.id,
+      title: book.title,
+      author: book.author,
+      category: book.category,
+      isbn: book.isbn,
+      price: Number(book.price),
+      quantity: 1,
+      maxStock: book.stock
+    });
+  }
+
+  updateCartUI();
+  openCart();
+};
+
+// Modifica Quantità nel Carrello
+window.updateCartQty = function(id, delta) {
+  const item = cart.find(i => i.id === id);
+  const book = books.find(b => b.id === id);
+  if (!item || !book) return;
+
+  const newQty = item.quantity + delta;
+  if (newQty <= 0) {
+    cart = cart.filter(i => i.id !== id);
+  } else if (newQty > book.stock) {
+    alert(`Solo ${book.stock} copie disponibili a magazzino!`);
+    return;
+  } else {
+    item.quantity = newQty;
+  }
+
+  updateCartUI();
+};
+
+// Rimuovi Libro dal Carrello
+window.removeFromCart = function(id) {
+  cart = cart.filter(i => i.id !== id);
+  updateCartUI();
+};
+
+// Svuota Carrello
+function clearCart() {
+  if (cart.length === 0) return;
+  if (confirm("Vuoi svuotare la cassa?")) {
+    cart = [];
+    updateCartUI();
+  }
+}
+
+// Aggiorna Interfaccia Utente Cassa & Carrello
+function updateCartUI() {
+  const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalAmount = getCartTotal();
+  const iva = totalAmount * 0.04; // 4% editoria
+
+  // Badge carrello header
+  cartCountBadge.textContent = totalQty;
+  if (totalQty > 0) {
+    cartCountBadge.style.display = "inline-flex";
+  } else {
+    cartCountBadge.style.display = "none";
+  }
+
+  if (cart.length === 0) {
+    cartEmptyState.classList.remove("hidden");
+    cartItemsList.classList.add("hidden");
+    cartDrawerFooter.classList.add("hidden");
+    return;
+  }
+
+  cartEmptyState.classList.add("hidden");
+  cartItemsList.classList.remove("hidden");
+  cartDrawerFooter.classList.remove("hidden");
+
+  // Render elementi carrello
+  cartItemsList.innerHTML = cart.map(item => {
+    const subtotal = item.price * item.quantity;
+    return `
+      <div class="cart-item-row">
+        <div class="cart-item-info">
+          <div class="cart-item-title" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</div>
+          <div class="cart-item-author">di ${escapeHtml(item.author)}</div>
+          <div class="cart-item-price">€ ${item.price.toFixed(2)} x ${item.quantity} = € ${subtotal.toFixed(2)}</div>
+        </div>
+        <div class="cart-qty-controls">
+          <button class="btn-qty" onclick="updateCartQty('${item.id}', -1)" title="Diminuisci">-</button>
+          <span class="cart-qty-value">${item.quantity}</span>
+          <button class="btn-qty" onclick="updateCartQty('${item.id}', 1)" ${item.quantity >= item.maxStock ? 'disabled' : ''} title="Aumenta">+</button>
+          <button class="btn-cart-remove" onclick="removeFromCart('${item.id}')" title="Rimuovi">&times;</button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  // Totali
+  cartTotalItems.textContent = `${totalQty} volumi`;
+  cartIva.textContent = `€ ${iva.toFixed(2)}`;
+  cartGrandTotal.textContent = `€ ${totalAmount.toFixed(2)}`;
+
+  calculateCashChange();
+}
+
+// Imposta Metodo di Pagamento (Contanti / POS)
+function setPaymentMethod(method) {
+  currentPaymentMethod = method;
+  if (method === "cash") {
+    payMethodCash.classList.add("active");
+    payMethodPos.classList.remove("active");
+    cashPaymentBox.classList.remove("hidden");
+    posPaymentBox.classList.add("hidden");
+  } else {
+    payMethodPos.classList.add("active");
+    payMethodCash.classList.remove("active");
+    posPaymentBox.classList.remove("hidden");
+    cashPaymentBox.classList.add("hidden");
+  }
+}
+
+// Calcolo Resto in Tempo Reale
+function calculateCashChange() {
+  const total = getCartTotal();
+  const received = parseFloat(cashReceivedInput.value);
+
+  if (isNaN(received) || received === 0) {
+    changeDueBox.className = "change-box info";
+    changeDueBox.innerHTML = `<span>Resto dovuto:</span><strong>€ 0.00</strong>`;
+    return;
+  }
+
+  const diff = received - total;
+  if (diff >= 0) {
+    changeDueBox.className = "change-box info";
+    changeDueBox.innerHTML = `<span>Resto dovuto al cliente:</span><strong>€ ${diff.toFixed(2)}</strong>`;
+  } else {
+    changeDueBox.className = "change-box error";
+    changeDueBox.innerHTML = `<span>Importo insufficiente:</span><strong>- € ${Math.abs(diff).toFixed(2)}</strong>`;
+  }
+}
+
+// Simulatore Lettura POS
+function simulatePosPayment() {
+  posStatusText.textContent = "⏳ Connessione al circuito bancario in corso...";
+  posSimulateBtn.disabled = true;
+
+  setTimeout(() => {
+    posSimulatedAuth = "#" + Math.floor(10000 + Math.random() * 90000);
+    posStatusText.innerHTML = `✅ <strong>TRANSAZIONE APPROVATA!</strong> Codice AUTH: ${posSimulatedAuth}`;
+    posSimulateBtn.disabled = false;
+  }, 600);
+}
+
+// Processo di Chiusura Vendita & Scarico Scorte
+function processCheckout() {
+  if (cart.length === 0) {
+    alert("La cassa è vuota!");
+    return;
+  }
+
+  const total = getCartTotal();
+
+  // Validazione pagamento contanti
+  let cashGiven = parseFloat(cashReceivedInput.value);
+  let change = 0;
+
+  if (currentPaymentMethod === "cash") {
+    if (isNaN(cashGiven) || cashGiven < total) {
+      // Se non ha digitato l'importo o è inferiore, chiediamo se paga cifra esatta
+      if (isNaN(cashGiven) || cashGiven === 0) {
+        cashGiven = total;
+        change = 0;
+      } else {
+        alert(`Il contante inserito (€ ${cashGiven.toFixed(2)}) è inferiore al totale dovuto (€ ${total.toFixed(2)})!`);
+        cashReceivedInput.focus();
+        return;
+      }
+    } else {
+      change = cashGiven - total;
+    }
+  } else {
+    if (!posSimulatedAuth) {
+      posSimulatedAuth = "#" + Math.floor(10000 + Math.random() * 90000);
+    }
+  }
+
+  // SCARICO SCORTE INVENTARIO
+  cart.forEach(item => {
+    const book = books.find(b => b.id === item.id);
+    if (book) {
+      book.stock = Math.max(0, book.stock - item.quantity);
+    }
+  });
+
+  // Salva inventario aggiornato
+  saveBooks();
+
+  // Mostra Scontrino Fiscale
+  showReceipt(total, cashGiven, change);
+
+  // Reset carrello cassa
+  cart = [];
+  cashReceivedInput.value = "";
+  posSimulatedAuth = null;
+  posStatusText.textContent = "Pronto per inserimento carta o Contactless...";
+  updateCartUI();
+  closeCart();
+
+  // Aggiorna il catalogo e le statistiche in tempo reale
+  render();
+}
+
+// Visualizza Scontrino Fiscale
+function showReceipt(total, cashGiven, change) {
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("it-IT") + " - " + now.toLocaleTimeString("it-IT", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  receiptDate.textContent = dateStr;
+
+  // Render righe articoli
+  receiptItemsContainer.innerHTML = cart.map(item => `
+    <div class="receipt-item-line">
+      <span>${escapeHtml(item.title.length > 28 ? item.title.substring(0, 26) + '..' : item.title)}</span>
+      <span>€ ${(item.price * item.quantity).toFixed(2)}</span>
+    </div>
+    <div class="receipt-item-sub">
+      ${item.quantity} pz x € ${item.price.toFixed(2)} [IVA 4%]
+    </div>
+  `).join("");
+
+  receiptTotalAmount.textContent = `€ ${total.toFixed(2)}`;
+
+  if (currentPaymentMethod === "cash") {
+    receiptPaymentType.textContent = "CONTANTI";
+    receiptCashRow.style.display = "flex";
+    receiptCashReceived.textContent = `€ ${cashGiven.toFixed(2)}`;
+    receiptChangeRow.style.display = "flex";
+    receiptChangeAmount.textContent = `€ ${change.toFixed(2)}`;
+    receiptPosRow.style.display = "none";
+  } else {
+    receiptPaymentType.textContent = "CARTA / POS ELETTRONICO";
+    receiptCashRow.style.display = "none";
+    receiptChangeRow.style.display = "none";
+    receiptPosRow.style.display = "flex";
+    receiptPosAuth.textContent = posSimulatedAuth || "#94821";
+  }
+
+  receiptModal.classList.remove("hidden");
+}
+
+function closeReceipt() {
+  receiptModal.classList.add("hidden");
+}
+
+// Render generale del Catalogo
 function render() {
   const filtered = filterAndSortBooks();
   renderStats();
@@ -5133,16 +5512,13 @@ function filterAndSortBooks() {
   const sort = sortBy.value;
 
   let result = books.filter(b => {
-    // Ricerca testo
     const matchQuery = 
       b.title.toLowerCase().includes(query) ||
       b.author.toLowerCase().includes(query) ||
       b.isbn.toLowerCase().includes(query);
 
-    // Categoria
     const matchCat = (cat === "all") || (b.category === cat);
 
-    // Giacenza
     let matchStock = true;
     if (stock === "available") matchStock = b.stock > 2;
     else if (stock === "low") matchStock = b.stock > 0 && b.stock <= 2;
@@ -5180,12 +5556,12 @@ function renderStats() {
   const lowStock = books.filter(b => b.stock > 0 && b.stock <= 2).length;
 
   totalBooksEl.textContent = totalBooks;
-  totalCopiesEl.textContent = totalCopies;
+  totalCopiesEl.textContent = totalCopies.toLocaleString("it-IT");
   totalValueEl.textContent = `€ ${totalValue.toLocaleString("it-IT", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   lowStockCountEl.textContent = lowStock;
 }
 
-// Render griglia schede
+// Render griglia schede libri con DocumentFragment ad alte prestazioni
 function renderGrid(bookList) {
   if (bookList.length === 0) {
     booksGrid.innerHTML = "";
@@ -5203,7 +5579,9 @@ function renderGrid(bookList) {
     // Tag stock
     let stockClass = "stock-available";
     let stockLabel = `Disponibile (${book.stock} copie)`;
-    if (book.stock === 0) {
+    let isOutOfStock = book.stock === 0;
+
+    if (isOutOfStock) {
       stockClass = "stock-out";
       stockLabel = "Esaurito (0)";
     } else if (book.stock <= 2) {
@@ -5226,19 +5604,25 @@ function renderGrid(bookList) {
             <code>🏷️ ${escapeHtml(book.isbn)}</code>
           </div>
           <div class="meta-row">
-            <span>Anno di pubblicazione:</span>
+            <span>Anno:</span>
             <span>${book.year || "-"}</span>
           </div>
         </div>
       </div>
 
-      <div class="book-footer">
-        <div class="book-price">€ ${Number(book.price).toFixed(2)}</div>
-        <div class="card-actions">
-          <button class="btn-icon" title="Riduci quantità (-1)" onclick="adjustStock('${book.id}', -1)">-</button>
-          <button class="btn-icon" title="Aumenta quantità (+1)" onclick="adjustStock('${book.id}', 1)">+</button>
-          <button class="btn-icon" title="Modifica dettagli" onclick="editBook('${book.id}')">✏️</button>
-          <button class="btn-icon delete" title="Elimina libro" onclick="deleteBook('${book.id}')">🗑️</button>
+      <div>
+        <button class="card-buy-btn" onclick="addToCart('${book.id}')" ${isOutOfStock ? 'disabled' : ''}>
+          ${isOutOfStock ? '❌ Scorta Esaurita' : '🛒 Aggiungi alla Cassa'}
+        </button>
+
+        <div class="book-footer">
+          <div class="book-price">€ ${Number(book.price).toFixed(2)}</div>
+          <div class="card-actions">
+            <button class="btn-icon" title="Riduci quantità (-1)" onclick="adjustStock('${book.id}', -1)">-</button>
+            <button class="btn-icon" title="Aumenta quantità (+1)" onclick="adjustStock('${book.id}', 1)">+</button>
+            <button class="btn-icon" title="Modifica dettagli" onclick="editBook('${book.id}')">✏️</button>
+            <button class="btn-icon delete" title="Elimina libro" onclick="deleteBook('${book.id}')">🗑️</button>
+          </div>
         </div>
       </div>
     `;
@@ -5250,11 +5634,10 @@ function renderGrid(bookList) {
   booksGrid.appendChild(fragment);
 }
 
-// Gestione Modale (Nuovo / Modifica)
+// Modale Libro (Aggiungi/Modifica)
 function openModal(bookToEdit = null) {
-  bookForm.reset();
   if (bookToEdit) {
-    modalTitle.textContent = "Modifica Scheda Libro";
+    modalTitle.textContent = "Modifica Libro";
     document.getElementById("bookId").value = bookToEdit.id;
     document.getElementById("bookTitle").value = bookToEdit.title;
     document.getElementById("bookAuthor").value = bookToEdit.author;
@@ -5265,37 +5648,38 @@ function openModal(bookToEdit = null) {
     document.getElementById("bookStock").value = bookToEdit.stock;
   } else {
     modalTitle.textContent = "Aggiungi Nuovo Libro al Catalogo";
+    bookForm.reset();
     document.getElementById("bookId").value = "";
     document.getElementById("bookYear").value = new Date().getFullYear();
   }
+
   bookModal.classList.remove("hidden");
-  document.getElementById("bookTitle").focus();
 }
 
 function closeModal() {
   bookModal.classList.add("hidden");
+  bookForm.reset();
 }
 
-// Submit Form
+// Gestione Form Submit
 function handleFormSubmit(e) {
   e.preventDefault();
+
   const id = document.getElementById("bookId").value;
   const title = document.getElementById("bookTitle").value.trim();
   const author = document.getElementById("bookAuthor").value.trim();
   const category = document.getElementById("bookCategory").value;
   const isbn = document.getElementById("bookIsbn").value.trim();
-  const year = parseInt(document.getElementById("bookYear").value, 10) || new Date().getFullYear();
-  const price = parseFloat(document.getElementById("bookPrice").value) || 0;
-  const stock = parseInt(document.getElementById("bookStock").value, 10) || 0;
+  const year = parseInt(document.getElementById("bookYear").value, 10);
+  const price = parseFloat(document.getElementById("bookPrice").value);
+  const stock = parseInt(document.getElementById("bookStock").value, 10);
 
   if (id) {
-    // Modifica
     const index = books.findIndex(b => b.id === id);
     if (index !== -1) {
-      books[index] = { id, title, author, category, isbn, year, price, stock };
+      books[index] = { ...books[index], title, author, category, isbn, year, price, stock };
     }
   } else {
-    // Nuovo
     const newBook = {
       id: "book-" + Date.now(),
       title,
@@ -5340,7 +5724,9 @@ window.deleteBook = function(id) {
   const book = books.find(b => b.id === id);
   if (book && confirm(`Sei sicuro di voler rimuovere "${book.title}" dal catalogo?`)) {
     books = books.filter(b => b.id !== id);
+    cart = cart.filter(i => i.id !== id);
     saveBooks();
+    updateCartUI();
     render();
   }
 };
@@ -5376,11 +5762,13 @@ function exportToCsv() {
   document.body.removeChild(link);
 }
 
-// Ripristina catalogo dimostrativo
+// Ripristina catalogo dimostrativo (500 libri)
 function resetCatalog() {
-  if (confirm("Vuoi ripristinare il catalogo iniziale di prova?")) {
+  if (confirm("Vuoi ripristinare il catalogo iniziale da 500 volumi?")) {
     books = [...DEFAULT_BOOKS];
+    cart = [];
     saveBooks();
+    updateCartUI();
     render();
   }
 }
