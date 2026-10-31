@@ -5211,7 +5211,16 @@ function setupCartListeners() {
     downloadPdfReceiptBtn.addEventListener("click", downloadReceiptPdf);
   }
   if (printReceiptBtn) {
-    printReceiptBtn.addEventListener("click", () => window.print());
+    printReceiptBtn.addEventListener("click", () => {
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobile) {
+        // Su mobile window.print() spesso non è supportato o stampa la pagina intera;
+        // invochiamo download/condivisione dello scontrino che include l'opzione Stampa
+        downloadReceiptPdf();
+      } else {
+        window.print();
+      }
+    });
   }
   closeReceiptBtn.addEventListener("click", closeReceipt);
   receiptOverlay.addEventListener("click", closeReceipt);
@@ -5952,6 +5961,7 @@ function generateReceiptPdfBlob(sale) {
   return new Blob([new TextEncoder().encode(body + xref + trailer)], { type: "application/pdf" });
 }
 
+// Download / Condivisione Scontrino PDF nativo (Mobile & Desktop 100% compatibile)
 function downloadReceiptPdf() {
   if (!lastCompletedSale) {
     alert("Nessun dato di vendita recente da scaricare!");
@@ -5959,17 +5969,83 @@ function downloadReceiptPdf() {
   }
 
   const pdfBlob = generateReceiptPdfBlob(lastCompletedSale);
-  if (!pdfBlob) return;
+  if (!pdfBlob) {
+    alert("Errore nella generazione dello scontrino PDF.");
+    return;
+  }
 
-  const url = URL.createObjectURL(pdfBlob);
+  const fileName = "scontrino_bibliotech_" + Date.now() + ".pdf";
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  // Feedback visivo immediato per l'utente
+  if (downloadPdfReceiptBtn) {
+    const originalText = downloadPdfReceiptBtn.innerHTML;
+    downloadPdfReceiptBtn.innerHTML = "⏳ Download in corso...";
+    downloadPdfReceiptBtn.disabled = true;
+    setTimeout(() => {
+      downloadPdfReceiptBtn.innerHTML = originalText;
+      downloadPdfReceiptBtn.disabled = false;
+    }, 2500);
+  }
+
+  // 1. Su smartphone: Prova con Web Share API (File PDF reale)
+  // Questo apre il foglio nativo di Android/iOS: 'Salva su File', 'Download', 'WhatsApp', 'Stampa'
+  if (isMobile && typeof navigator.share === "function" && typeof File !== "undefined") {
+    try {
+      const file = new File([pdfBlob], fileName, { type: "application/pdf" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({
+          files: [file],
+          title: "Scontrino Fiscale BiblioTech",
+          text: "Scontrino acquisto BiblioTech - Totale: EUR " + lastCompletedSale.total.toFixed(2)
+        }).catch(err => {
+          // Se non è stato un annullamento volontario da parte dell'utente, apri visualizzatore
+          if (err && err.name !== "AbortError") {
+            fallbackMobilePdf(pdfBlob, fileName);
+          }
+        });
+        return;
+      }
+    } catch (shareErr) {
+      console.warn("Web Share API non disponibile:", shareErr);
+    }
+  }
+
+  // 2. Se su smartphone Web Share non è supportato: apri direttamente il PDF nel visualizzatore del telefono
+  if (isMobile) {
+    fallbackMobilePdf(pdfBlob, fileName);
+    return;
+  }
+
+  // 3. Su computer Desktop (Windows/Mac/Linux): download classico diretto
+  triggerDirectDownload(pdfBlob, fileName);
+}
+
+// Fallback per smartphone: visualizzazione diretta o download sicuro
+function fallbackMobilePdf(blob, fileName) {
+  const url = URL.createObjectURL(blob);
+  const win = window.open(url, "_blank");
+  if (!win) {
+    triggerDirectDownload(blob, fileName);
+  } else {
+    // Non revocare subito! Manteniamo il blob in memoria per 2 minuti
+    setTimeout(() => URL.revokeObjectURL(url), 120000);
+  }
+}
+
+// Download diretto tramite elemento anchor
+function triggerDirectDownload(blob, fileName) {
+  const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `scontrino_bibliotech_${Date.now()}.pdf`;
+  link.download = fileName;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  // Timeout lungo (60s) per consentire all'Android DownloadManager o al browser di completare
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
 
 // Utility anti-XSS
