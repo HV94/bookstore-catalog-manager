@@ -5013,6 +5013,7 @@ let books = [];
 let cart = [];
 let currentPaymentMethod = "cash";
 let posSimulatedAuth = null;
+let lastCompletedSale = null;
 
 // Elementi DOM Principali
 const booksGrid = document.getElementById("booksGrid");
@@ -5067,6 +5068,7 @@ const posSimulateBtn = document.getElementById("posSimulateBtn");
 // Modale Scontrino Fiscale
 const receiptModal = document.getElementById("receiptModal");
 const receiptOverlay = document.getElementById("receiptOverlay");
+const downloadPdfReceiptBtn = document.getElementById("downloadPdfReceiptBtn");
 const printReceiptBtn = document.getElementById("printReceiptBtn");
 const shareReceiptBtn = document.getElementById("shareReceiptBtn");
 const closeReceiptBtn = document.getElementById("closeReceiptBtn");
@@ -5204,16 +5206,12 @@ function setupCartListeners() {
   // Checkout
   checkoutBtn.addEventListener("click", processCheckout);
 
-  // Ricevuta (Stampa nativa e Salvataggio / Condivisione Mobile)
-  printReceiptBtn.addEventListener("click", () => {
-    try {
-      window.print();
-    } catch (e) {
-      shareReceipt();
-    }
-  });
-  if (shareReceiptBtn) {
-    shareReceiptBtn.addEventListener("click", shareReceipt);
+  // Ricevuta: Download PDF nativo (mobile & desktop) e Stampa
+  if (downloadPdfReceiptBtn) {
+    downloadPdfReceiptBtn.addEventListener("click", downloadReceiptPdf);
+  }
+  if (printReceiptBtn) {
+    printReceiptBtn.addEventListener("click", () => window.print());
   }
   closeReceiptBtn.addEventListener("click", closeReceipt);
   receiptOverlay.addEventListener("click", closeReceipt);
@@ -5450,6 +5448,20 @@ function processCheckout() {
 
   // Salva inventario aggiornato
   saveBooks();
+
+  // Salva dati vendita per generazione PDF e scontrino
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("it-IT") + " - " + now.toLocaleTimeString("it-IT", { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  
+  lastCompletedSale = {
+    date: dateStr,
+    items: cart.map(i => ({ ...i })),
+    total: total,
+    paymentType: currentPaymentMethod === "cash" ? "CONTANTI" : "CARTA / POS ELETTRONICO",
+    cashGiven: cashGiven,
+    change: change,
+    authCode: posSimulatedAuth
+  };
 
   // Mostra Scontrino Fiscale
   showReceipt(total, cashGiven, change);
@@ -5851,6 +5863,113 @@ function loadTheme() {
     document.body.removeAttribute("data-theme");
     themeIcon.textContent = "🌙";
   }
+}
+
+
+// ==========================================================================
+// Generatore di Scontrino Fiscale in PDF Puro (100% Mobile & Desktop)
+// ==========================================================================
+function generateReceiptPdfBlob(sale) {
+  if (!sale) return null;
+  
+  const storeName = "BIBLIOTECH - LIBRERIA";
+  const storeAddr = "Punto Vendita: Citta' Sant'Angelo (PE)";
+  const dateStr = sale.date;
+  const operator = "Operatore: Valentyn Haidukov (Cassa 01)";
+  
+  const lines = [
+    "================================",
+    "      " + storeName,
+    storeAddr,
+    "Data: " + dateStr,
+    operator,
+    "================================",
+    ""
+  ];
+
+  sale.items.forEach(item => {
+    const title = item.title.substring(0, 22);
+    const priceStr = "EUR " + (item.price * item.quantity).toFixed(2);
+    const pad = Math.max(1, 32 - title.length - priceStr.length);
+    lines.push(title + " ".repeat(pad) + priceStr);
+    lines.push("  " + item.quantity + " pz x EUR " + item.price.toFixed(2) + " [IVA 4%]");
+  });
+
+  lines.push("");
+  lines.push("--------------------------------");
+  const totStr = "EUR " + sale.total.toFixed(2);
+  const totPad = Math.max(1, 32 - 19 - totStr.length);
+  lines.push("TOTALE COMPLESSIVO:" + " ".repeat(totPad) + totStr);
+  lines.push("PAGAMENTO: " + sale.paymentType);
+
+  if (sale.paymentType === "CONTANTI" && sale.cashGiven !== undefined) {
+    lines.push("RICEVUTO: EUR " + sale.cashGiven.toFixed(2));
+    lines.push("RESTO:    EUR " + sale.change.toFixed(2));
+  } else if (sale.authCode) {
+    lines.push("CODICE AUTH POS: " + sale.authCode);
+  }
+
+  lines.push("================================");
+  lines.push("IVA assolta editore (art. 74)");
+  lines.push("||||| ||||||| |||| |||||||| ||||");
+  lines.push("GRAZIE PER LA VISITA!");
+  lines.push("hv94.github.io/bookstore-catalog-manager");
+
+  const pageHeight = Math.max(380, lines.length * 15 + 80);
+  const startY = pageHeight - 35;
+
+  let stream = "BT\n/F1 9 Tf\n14 TL\n18 " + startY + " Td\n";
+  lines.forEach(l => {
+    const esc = l.replace(/\\/g, "\\\\").replace(/\(/g, "\\(").replace(/\)/g, "\\)");
+    stream += "(" + esc + ") '\n";
+  });
+  stream += "ET\n";
+
+  const streamBytes = new TextEncoder().encode(stream);
+  const streamLen = streamBytes.length;
+
+  let body = "%PDF-1.4\n";
+  const offsets = [0];
+
+  function addObj(str) {
+    offsets.push(new TextEncoder().encode(body).length);
+    body += str;
+  }
+
+  addObj("1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n");
+  addObj("2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n");
+  addObj("3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 227 " + pageHeight + "] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>\nendobj\n");
+  addObj("4 0 obj\n<< /Length " + streamLen + " >>\nstream\n" + stream + "\nendstream\nendobj\n");
+  addObj("5 0 obj\n<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>\nendobj\n");
+
+  const startxref = new TextEncoder().encode(body).length;
+  let xref = "xref\n0 6\n0000000000 65535 f \n";
+  for (let i = 1; i <= 5; i++) {
+    xref += String(offsets[i]).padStart(10, "0") + " 00000 n \n";
+  }
+  const trailer = "trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n" + startxref + "\n%%EOF\n";
+
+  return new Blob([new TextEncoder().encode(body + xref + trailer)], { type: "application/pdf" });
+}
+
+function downloadReceiptPdf() {
+  if (!lastCompletedSale) {
+    alert("Nessun dato di vendita recente da scaricare!");
+    return;
+  }
+
+  const pdfBlob = generateReceiptPdfBlob(lastCompletedSale);
+  if (!pdfBlob) return;
+
+  const url = URL.createObjectURL(pdfBlob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `scontrino_bibliotech_${Date.now()}.pdf`;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 // Utility anti-XSS
