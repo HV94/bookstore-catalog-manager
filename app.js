@@ -5209,16 +5209,16 @@ function setupCartListeners() {
   receiptOverlay.addEventListener("click", closeReceipt);
 }
 
-// Apertura / Chiusura Cassa
+// Apertura / Chiusura Cassa POS
 function openCart() {
-  cartDrawer.classList.remove("hidden");
-  cartOverlay.classList.remove("hidden");
+  cartDrawer.classList.add("open");
+  cartOverlay.classList.add("open");
   calculateCashChange();
 }
 
 function closeCart() {
-  cartDrawer.classList.add("hidden");
-  cartOverlay.classList.add("hidden");
+  cartDrawer.classList.remove("open");
+  cartOverlay.classList.remove("open");
 }
 
 // Totale Carrello Corrente
@@ -5612,15 +5612,15 @@ function renderGrid(bookList) {
 
       <div>
         <button class="card-buy-btn" onclick="addToCart('${book.id}')" ${isOutOfStock ? 'disabled' : ''}>
-          ${isOutOfStock ? '❌ Scorta Esaurita' : '🛒 Aggiungi alla Cassa'}
+          ${isOutOfStock ? '❌ Scorta Esaurita' : '🛒 Metti in Cassa (+)'}
         </button>
 
         <div class="book-footer">
           <div class="book-price">€ ${Number(book.price).toFixed(2)}</div>
           <div class="card-actions">
-            <button class="btn-icon" title="Riduci quantità (-1)" onclick="adjustStock('${book.id}', -1)">-</button>
-            <button class="btn-icon" title="Aumenta quantità (+1)" onclick="adjustStock('${book.id}', 1)">+</button>
-            <button class="btn-icon" title="Modifica dettagli" onclick="editBook('${book.id}')">✏️</button>
+            <button class="btn-icon" title="Rimuovi dalla cassa (-1)" onclick="updateCartQty('${book.id}', -1)">-</button>
+            <button class="btn-icon btn-cart-plus" title="Metti in Cassa (+1)" onclick="addToCart('${book.id}')">+</button>
+            <button class="btn-icon" title="Modifica dettagli catalogo" onclick="editBook('${book.id}')">✏️</button>
             <button class="btn-icon delete" title="Elimina libro" onclick="deleteBook('${book.id}')">🗑️</button>
           </div>
         </div>

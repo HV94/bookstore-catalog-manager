@@ -997,14 +997,21 @@ body[data-theme="dark"] .btn-cart {
   box-shadow: none;
 }
 
-/* Overlay & Drawer Cassa */
+/* Overlay & Drawer Cassa POS (Bulletproof) */
 .cart-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(4px);
-  z-index: 1000;
-  transition: opacity 0.3s ease;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(5px);
+  z-index: 99998;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.cart-overlay.open {
+  display: block !important;
+  opacity: 1 !important;
 }
 
 .cart-drawer {
@@ -1012,21 +1019,36 @@ body[data-theme="dark"] .btn-cart {
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(480px, 100vw);
-  background: var(--bg-card);
-  border-left: 1px solid var(--border-color);
-  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+  width: min(500px, 100vw);
+  background: #0b1329 !important;
+  color: #f8fafc !important;
+  border-left: 2px solid #3b82f6;
+  box-shadow: -10px 0 45px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
-  z-index: 1001;
-  transform: translateX(0);
+  z-index: 99999;
+  transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
 }
 
-.cart-drawer.hidden {
-  display: flex !important;
-  transform: translateX(100%);
-  pointer-events: none;
+.cart-drawer.open {
+  transform: translateX(0) !important;
+  visibility: visible !important;
+}
+
+.btn-cart-plus {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  color: #10b981 !important;
+  font-weight: 800 !important;
+  font-size: 1.1rem !important;
+}
+
+.btn-cart-plus:hover {
+  background: #10b981 !important;
+  color: #ffffff !important;
+  border-color: #10b981 !important;
 }
 
 .cart-drawer-header {
