@@ -22,7 +22,7 @@ const LIBRI_INIZIALI = [
     titolo: "Clean Code: Guida per artigiani del software",
     autore: "Robert C. Martin",
     genere: "Informatica",
-    prezzo: 38.00,
+    prezzo: 19.50,
     copie: 6,
     isbn: "978-8850334384",
     anno: 2018,
@@ -35,7 +35,7 @@ const LIBRI_INIZIALI = [
     titolo: "Il Pragmatic Programmer",
     autore: "David Thomas, Andrew Hunt",
     genere: "Informatica",
-    prezzo: 42.00,
+    prezzo: 22.00,
     copie: 4,
     isbn: "978-8850335008",
     anno: 2020,
@@ -48,7 +48,7 @@ const LIBRI_INIZIALI = [
     titolo: "Reti di Calcolatori e Internet",
     autore: "James F. Kurose, Keith W. Ross",
     genere: "Informatica",
-    prezzo: 55.00,
+    prezzo: 28.00,
     copie: 8,
     isbn: "978-8871926407",
     anno: 2022,
@@ -61,7 +61,7 @@ const LIBRI_INIZIALI = [
     titolo: "Guida a HTML5 e CSS3",
     autore: "Mark Pilgrim",
     genere: "Informatica",
-    prezzo: 24.50,
+    prezzo: 14.50,
     copie: 12,
     isbn: "978-8848126748",
     anno: 2019,
@@ -74,7 +74,7 @@ const LIBRI_INIZIALI = [
     titolo: "JavaScript: La Guida Definitiva",
     autore: "David Flanagan",
     genere: "Informatica",
-    prezzo: 49.00,
+    prezzo: 24.00,
     copie: 5,
     isbn: "978-8848129817",
     anno: 2021,
@@ -89,7 +89,7 @@ const LIBRI_INIZIALI = [
     titolo: "1984",
     autore: "George Orwell",
     genere: "Narrativa",
-    prezzo: 12.00,
+    prezzo: 7.00,
     copie: 15,
     isbn: "978-8804668237",
     anno: 1949,
@@ -102,7 +102,7 @@ const LIBRI_INIZIALI = [
     titolo: "Il Signore degli Anelli",
     autore: "J.R.R. Tolkien",
     genere: "Narrativa",
-    prezzo: 28.00,
+    prezzo: 16.00,
     copie: 7,
     isbn: "978-8845292613",
     anno: 1954,
@@ -115,7 +115,7 @@ const LIBRI_INIZIALI = [
     titolo: "Dune",
     autore: "Frank Herbert",
     genere: "Narrativa",
-    prezzo: 16.50,
+    prezzo: 9.90,
     copie: 10,
     isbn: "978-8834739600",
     anno: 1965,
@@ -128,7 +128,7 @@ const LIBRI_INIZIALI = [
     titolo: "Il Piccolo Principe",
     autore: "Antoine de Saint-Exupéry",
     genere: "Narrativa",
-    prezzo: 9.90,
+    prezzo: 5.50,
     copie: 20,
     isbn: "978-8845292699",
     anno: 1943,
@@ -141,7 +141,7 @@ const LIBRI_INIZIALI = [
     titolo: "Il Nome della Rosa",
     autore: "Umberto Eco",
     genere: "Narrativa",
-    prezzo: 14.00,
+    prezzo: 8.50,
     copie: 8,
     isbn: "978-8845278655",
     anno: 1980,
@@ -156,7 +156,7 @@ const LIBRI_INIZIALI = [
     titolo: "Sapiens: Da animali a dèi",
     autore: "Yuval Noah Harari",
     genere: "Saggistica",
-    prezzo: 18.00,
+    prezzo: 11.90,
     copie: 11,
     isbn: "978-8845296499",
     anno: 2014,
@@ -169,7 +169,7 @@ const LIBRI_INIZIALI = [
     titolo: "Pensieri lenti e veloci",
     autore: "Daniel Kahneman",
     genere: "Saggistica",
-    prezzo: 15.00,
+    prezzo: 8.90,
     copie: 6,
     isbn: "978-8804629276",
     anno: 2012,
@@ -182,7 +182,7 @@ const LIBRI_INIZIALI = [
     titolo: "Armi, acciaio e malattie",
     autore: "Jared Diamond",
     genere: "Saggistica",
-    prezzo: 14.50,
+    prezzo: 8.50,
     copie: 5,
     isbn: "978-8806219222",
     anno: 1997,
@@ -195,7 +195,7 @@ const LIBRI_INIZIALI = [
     titolo: "La realtà non è come ci appare",
     autore: "Carlo Rovelli",
     genere: "Saggistica",
-    prezzo: 12.50,
+    prezzo: 7.50,
     copie: 9,
     isbn: "978-8860889218",
     anno: 2014,
@@ -208,7 +208,7 @@ const LIBRI_INIZIALI = [
     titolo: "Fattore 1%: Piccole abitudini",
     autore: "Luca Mazzucchelli",
     genere: "Saggistica",
-    prezzo: 16.90,
+    prezzo: 9.90,
     copie: 14,
     isbn: "978-8820067342",
     anno: 2019,
@@ -223,7 +223,7 @@ const LIBRI_INIZIALI = [
     titolo: "La Divina Commedia",
     autore: "Dante Alighieri",
     genere: "Classici",
-    prezzo: 22.00,
+    prezzo: 12.50,
     copie: 8,
     isbn: "978-8804683018",
     anno: 1321,
@@ -236,7 +236,7 @@ const LIBRI_INIZIALI = [
     titolo: "I Promessi Sposi",
     autore: "Alessandro Manzoni",
     genere: "Classici",
-    prezzo: 13.00,
+    prezzo: 7.50,
     copie: 12,
     isbn: "978-8804683025",
     anno: 1840,
@@ -249,7 +249,7 @@ const LIBRI_INIZIALI = [
     titolo: "Guerra e Pace",
     autore: "Lev Tolstoj",
     genere: "Classici",
-    prezzo: 24.00,
+    prezzo: 14.00,
     copie: 4,
     isbn: "978-8804683032",
     anno: 1869,
@@ -262,7 +262,7 @@ const LIBRI_INIZIALI = [
     titolo: "Orgoglio e Pregiudizio",
     autore: "Jane Austen",
     genere: "Classici",
-    prezzo: 11.50,
+    prezzo: 6.90,
     copie: 16,
     isbn: "978-8804683049",
     anno: 1813,
@@ -275,7 +275,7 @@ const LIBRI_INIZIALI = [
     titolo: "L'Odissea",
     autore: "Omero",
     genere: "Classici",
-    prezzo: 12.00,
+    prezzo: 7.00,
     copie: 7,
     isbn: "978-8804683056",
     anno: -800,
@@ -290,7 +290,7 @@ const LIBRI_INIZIALI = [
     titolo: "L'ordine del tempo",
     autore: "Carlo Rovelli",
     genere: "Scienza",
-    prezzo: 14.00,
+    prezzo: 8.50,
     copie: 10,
     isbn: "978-8845931925",
     anno: 2017,
@@ -303,7 +303,7 @@ const LIBRI_INIZIALI = [
     titolo: "Breve storia di quasi tutto",
     autore: "Bill Bryson",
     genere: "Scienza",
-    prezzo: 15.50,
+    prezzo: 9.50,
     copie: 8,
     isbn: "978-8850239023",
     anno: 2003,
@@ -316,7 +316,7 @@ const LIBRI_INIZIALI = [
     titolo: "Cosmo",
     autore: "Carl Sagan",
     genere: "Scienza",
-    prezzo: 17.00,
+    prezzo: 9.90,
     copie: 5,
     isbn: "978-8845298813",
     anno: 1980,
@@ -329,7 +329,7 @@ const LIBRI_INIZIALI = [
     titolo: "L'universo elegante",
     autore: "Brian Greene",
     genere: "Scienza",
-    prezzo: 16.00,
+    prezzo: 9.50,
     copie: 6,
     isbn: "978-8806223403",
     anno: 1999,
@@ -342,7 +342,7 @@ const LIBRI_INIZIALI = [
     titolo: "La fisica del futuro",
     autore: "Michio Kaku",
     genere: "Scienza",
-    prezzo: 14.90,
+    prezzo: 8.90,
     copie: 7,
     isbn: "978-8807884559",
     anno: 2011,
@@ -365,19 +365,20 @@ let ordinamento = 'stock-desc';
 let libroInModificaId = null;
 
 function caricaLibri() {
-  const salvati = localStorage.getItem('bibliotech_libri_v4') || localStorage.getItem('bibliotech_libri');
+  const salvati = localStorage.getItem('bibliotech_libri_v5') || localStorage.getItem('bibliotech_libri');
   if (salvati) {
     try {
       const parsed = JSON.parse(salvati);
       const sincronizzati = parsed.map(l => {
         const init = LIBRI_INIZIALI.find(item => item.id === l.id);
+        if (init) l.prezzo = init.prezzo;
         if (init) {
           // Forza sempre la copertina ufficiale ad alta risoluzione
           return { ...l, immagine: init.immagine, icona: init.icona };
         }
         return l;
       });
-      localStorage.setItem('bibliotech_libri_v4', JSON.stringify(sincronizzati));
+      localStorage.setItem('bibliotech_libri_v5', JSON.stringify(sincronizzati));
       localStorage.setItem('bibliotech_libri', JSON.stringify(sincronizzati));
       return sincronizzati;
     } catch (e) {
@@ -388,7 +389,7 @@ function caricaLibri() {
 }
 
 function salvaLibri() {
-  localStorage.setItem('bibliotech_libri_v4', JSON.stringify(libri));
+  localStorage.setItem('bibliotech_libri_v5', JSON.stringify(libri));
   localStorage.setItem('bibliotech_libri', JSON.stringify(libri));
 }
 
