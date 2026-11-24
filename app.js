@@ -365,17 +365,21 @@ let ordinamento = 'stock-desc';
 let libroInModificaId = null;
 
 function caricaLibri() {
-  const salvati = localStorage.getItem('bibliotech_libri');
+  const salvati = localStorage.getItem('bibliotech_libri_v4') || localStorage.getItem('bibliotech_libri');
   if (salvati) {
     try {
       const parsed = JSON.parse(salvati);
-      return parsed.map(l => {
+      const sincronizzati = parsed.map(l => {
         const init = LIBRI_INIZIALI.find(item => item.id === l.id);
-        if (init && (!l.immagine || l.immagine.includes('unsplash.com'))) {
-          return { ...l, immagine: init.immagine };
+        if (init) {
+          // Forza sempre la copertina ufficiale ad alta risoluzione
+          return { ...l, immagine: init.immagine, icona: init.icona };
         }
         return l;
       });
+      localStorage.setItem('bibliotech_libri_v4', JSON.stringify(sincronizzati));
+      localStorage.setItem('bibliotech_libri', JSON.stringify(sincronizzati));
+      return sincronizzati;
     } catch (e) {
       console.warn("Errore lettura dati da localStorage, uso default.");
     }
@@ -384,6 +388,7 @@ function caricaLibri() {
 }
 
 function salvaLibri() {
+  localStorage.setItem('bibliotech_libri_v4', JSON.stringify(libri));
   localStorage.setItem('bibliotech_libri', JSON.stringify(libri));
 }
 
