@@ -658,28 +658,28 @@ function renderGriglia() {
         `<span class="badge badge-success">Disponibile (${l.copie})</span>`);
 
     return `
-      <article class="book-card" data-id="${l.id}">
-        <div class="book-cover-container" style="position: relative; width: 100%; height: 230px; border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; padding: 10px;">
-          <img src="${l.immagine || ('covers/cover-' + l.id + '.jpg')}" alt="${l.titolo}" loading="lazy" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: transform 0.25s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.src='https://covers.openlibrary.org/b/id/8065615-L.jpg';">
-          <span style="position: absolute; top: 8px; right: 8px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">${l.icona || '📖'} ${l.genere}</span>
-          <div style="position: absolute; top: 8px; left: 8px; display: flex; gap: 0.35rem;">
-            <button class="btn-icon-sm" onclick="apriModaleLibro(${l.id})" title="Modifica Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 4px 7px; border-radius: 6px; color: #38bdf8; cursor: pointer; font-size: 0.75rem;">✏️</button>
-            <button class="btn-icon-sm" onclick="eliminaLibro(${l.id})" title="Elimina Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 4px 7px; border-radius: 6px; color: #f87171; cursor: pointer; font-size: 0.75rem;">🗑️</button>
+      <article class="book-card cat-${l.genere}" data-id="${l.id}">
+        <div class="book-cover-container" style="position: relative; width: 100%; height: 260px; border-radius: 12px; overflow: hidden; background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: center; padding: 14px; border: 1px solid #e2e8f0;">
+          <img src="${l.immagine || ('covers/cover-' + l.id + '.jpg')}" alt="${l.titolo}" loading="lazy" style="height: 100%; max-height: 232px; width: auto; max-width: 90%; object-fit: contain; border-radius: 2px 6px 6px 2px; box-shadow: 4px 6px 16px rgba(15, 23, 42, 0.2), -1px 0 2px rgba(15, 23, 42, 0.08); transition: transform 0.25s ease;" onmouseover="this.style.transform='scale(1.04) translateY(-2px)'" onmouseout="this.style.transform='scale(1) translateY(0)'" onerror="this.src='covers/cover-1.jpg';">
+          <span style="position: absolute; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(4px); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.2); box-shadow: 0 2px 5px rgba(0,0,0,0.06);">${l.icona || '📖'} ${l.genere}</span>
+          <div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 0.35rem;">
+            <button class="btn-icon-sm" onclick="apriModaleLibro(${l.id})" title="Modifica Libro" style="background: rgba(255, 255, 255, 0.95); border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 6px; color: #0284c7; cursor: pointer; font-size: 0.75rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">✏️</button>
+            <button class="btn-icon-sm" onclick="eliminaLibro(${l.id})" title="Elimina Libro" style="background: rgba(255, 255, 255, 0.95); border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 6px; color: #ef4444; cursor: pointer; font-size: 0.75rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">🗑️</button>
           </div>
         </div>
 
-        <div style="font-size: 0.72rem; color: #38bdf8; font-weight: 700; text-transform: uppercase;">${l.genere}</div>
-        <h3 class="book-title" style="font-size: 0.95rem; font-weight: 700; margin: 0.2rem 0 0.35rem 0; line-height: 1.3;">${l.titolo}</h3>
-        <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.5rem;">Autore: <strong style="color: #cbd5e1;">${l.autore}</strong></div>
+        <div style="font-size: 0.74rem; color: #0284c7; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">${l.genere}</div>
+        <h3 class="book-title" style="font-size: 1.02rem; font-weight: 700; color: #0f172a; margin: 0.25rem 0 0.35rem 0; line-height: 1.35;">${l.titolo}</h3>
+        <div style="font-size: 0.84rem; color: #475569; margin-bottom: 0.5rem;">Autore: <strong style="color: #0f172a;">${l.autore}</strong></div>
 
-        <div style="font-size: 0.75rem; color: #64748b; font-family: monospace; margin-bottom: 0.5rem;">ISBN: ${l.isbn}</div>
+        <div style="font-size: 0.75rem; color: #64748b; font-family: monospace; margin-bottom: 0.65rem;">ISBN: ${l.isbn}</div>
 
-        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
-          <div style="font-size: 1.15rem; font-weight: 800; color: #34d399;">€ ${l.prezzo.toFixed(2).replace('.', ',')}</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid #e2e8f0;">
+          <div style="font-size: 1.25rem; font-weight: 800; color: #059669;">€ ${l.prezzo.toFixed(2).replace('.', ',')}</div>
           ${scortaBadge}
         </div>
 
-        <div style="margin-top: 0.75rem;">
+        <div style="margin-top: 0.85rem;">
           <button class="btn btn-primary btn-block" onclick="aggiungiAlCarrello(${l.id})" ${l.copie === 0 ? 'disabled style="opacity: 0.5;"' : ''}>
             🛒 Aggiungi in Cassa
           </button>

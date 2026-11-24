@@ -1084,6 +1084,11 @@ body {
     height: 120px !important;
   }
 
+  .book-cover-container {
+    height: 180px !important;
+    padding: 8px !important;
+  }
+
   .book-title {
     font-size: 0.8rem !important;
     line-height: 1.25 !important;
