@@ -1102,14 +1102,20 @@ body {
     bottom: 0 !important;
     width: 100% !important;
     max-width: 100% !important;
-    height: 85vh !important;
-    max-height: 85vh !important;
-    border-radius: 20px 20px 0 0 !important;
+    height: 90vh !important;
+    height: 90dvh !important;
+    max-height: 90vh !important;
+    max-height: 90dvh !important;
+    border-radius: 24px 24px 0 0 !important;
     border-top: 2px solid #3b82f6 !important;
     border-left: none !important;
     transform: translateY(105%) !important;
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7) !important;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.75) !important;
     visibility: hidden;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    z-index: 99999 !important;
   }
 
   .cart-drawer.open {
@@ -1117,14 +1123,46 @@ body {
     visibility: visible !important;
   }
 
+  .cart-drawer-header {
+    position: relative !important;
+    padding: 1.5rem 1.25rem 0.75rem 1.25rem !important;
+    flex-shrink: 0 !important;
+  }
+
   .cart-drawer-header::before {
-    content: "";
-    display: block;
-    width: 44px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 99px;
-    margin: 0 auto 10px;
+    content: "" !important;
+    position: absolute !important;
+    top: 8px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 44px !important;
+    height: 5px !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-radius: 99px !important;
+    margin: 0 !important;
+  }
+
+  .cart-drawer-body {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0.75rem 1rem !important;
+    max-height: 30vh !important;
+  }
+
+  .cart-drawer-footer {
+    flex: 0 1 auto !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 0.85rem 1rem !important;
+    padding-bottom: calc(env(safe-area-inset-bottom, 24px) + 2.25rem) !important;
+    border-top: 1px solid var(--border-color) !important;
+  }
+
+  .btn-checkout {
+    padding: 0.85rem 1rem !important;
+    font-size: 0.92rem !important;
+    border-radius: 12px !important;
   }
 
   .btn-cart-qty, .qty-btn {
