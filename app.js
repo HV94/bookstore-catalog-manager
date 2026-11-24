@@ -27,7 +27,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8850334384",
     anno: 2018,
     editore: "Apogeo",
-    icona: "💻"
+    icona: "💻",
+    immagine: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 2,
@@ -39,7 +40,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8850335008",
     anno: 2020,
     editore: "Apogeo",
-    icona: "💻"
+    icona: "💻",
+    immagine: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 3,
@@ -51,7 +53,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8871926407",
     anno: 2022,
     editore: "Pearson",
-    icona: "🌐"
+    icona: "🌐",
+    immagine: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 4,
@@ -63,7 +66,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8848126748",
     anno: 2019,
     editore: "Tecniche Nuove",
-    icona: "🎨"
+    icona: "🎨",
+    immagine: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 5,
@@ -75,7 +79,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8848129817",
     anno: 2021,
     editore: "Tecniche Nuove",
-    icona: "⚡"
+    icona: "⚡",
+    immagine: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&w=600&q=80'
   },
 
   // Categoria: Narrativa
@@ -89,7 +94,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8804668237",
     anno: 1949,
     editore: "Mondadori",
-    icona: "📖"
+    icona: "📖",
+    immagine: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 7,
@@ -101,7 +107,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8845292613",
     anno: 1954,
     editore: "Bompiani",
-    icona: "🗡️"
+    icona: "🗡️",
+    immagine: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 8,
@@ -113,7 +120,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8834739600",
     anno: 1965,
     editore: "Fanucci",
-    icona: "🏜️"
+    icona: "🏜️",
+    immagine: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 9,
@@ -125,7 +133,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8845292699",
     anno: 1943,
     editore: "Bompiani",
-    icona: "👑"
+    icona: "👑",
+    immagine: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 10,
@@ -137,7 +146,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8845278655",
     anno: 1980,
     editore: "Bompiani",
-    icona: "🏰"
+    icona: "🏰",
+    immagine: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=600&q=80'
   },
 
   // Categoria: Saggistica
@@ -151,7 +161,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8845296499",
     anno: 2014,
     editore: "Bompiani",
-    icona: "🧠"
+    icona: "🧠",
+    immagine: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 12,
@@ -163,7 +174,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8804629276",
     anno: 2012,
     editore: "Mondadori",
-    icona: "🧠"
+    icona: "🧠",
+    immagine: 'https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 13,
@@ -175,7 +187,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8806219222",
     anno: 1997,
     editore: "Einaudi",
-    icona: "🌍"
+    icona: "🌍",
+    immagine: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 14,
@@ -187,7 +200,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8860889218",
     anno: 2014,
     editore: "Raffaello Cortina",
-    icona: "🌌"
+    icona: "🌌",
+    immagine: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 15,
@@ -199,7 +213,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8820067342",
     anno: 2019,
     editore: "Sperling & Kupfer",
-    icona: "📈"
+    icona: "📈",
+    immagine: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80'
   },
 
   // Categoria: Classici
@@ -213,7 +228,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8804683018",
     anno: 1321,
     editore: "Mondadori",
-    icona: "🏛️"
+    icona: "🏛️",
+    immagine: 'https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 17,
@@ -225,7 +241,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8804683025",
     anno: 1840,
     editore: "Mondadori",
-    icona: "🏛️"
+    icona: "🏛️",
+    immagine: 'https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 18,
@@ -237,7 +254,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8804683032",
     anno: 1869,
     editore: "Mondadori",
-    icona: "🏛️"
+    icona: "🏛️",
+    immagine: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 19,
@@ -249,7 +267,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8804683049",
     anno: 1813,
     editore: "Mondadori",
-    icona: "🏛️"
+    icona: "🏛️",
+    immagine: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 20,
@@ -261,7 +280,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8804683056",
     anno: -800,
     editore: "Mondadori",
-    icona: "🏛️"
+    icona: "🏛️",
+    immagine: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=600&q=80'
   },
 
   // Categoria: Scienza
@@ -275,7 +295,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8845931925",
     anno: 2017,
     editore: "Adelphi",
-    icona: "⏳"
+    icona: "⏳",
+    immagine: 'https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 22,
@@ -287,7 +308,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8850239023",
     anno: 2003,
     editore: "TEA",
-    icona: "🔬"
+    icona: "🔬",
+    immagine: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 23,
@@ -299,7 +321,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8845298813",
     anno: 1980,
     editore: "Bompiani",
-    icona: "🔭"
+    icona: "🔭",
+    immagine: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 24,
@@ -311,7 +334,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8806223403",
     anno: 1999,
     editore: "Einaudi",
-    icona: "🌌"
+    icona: "🌌",
+    immagine: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=80'
   },
   {
     id: 25,
@@ -323,7 +347,8 @@ const LIBRI_INIZIALI = [
     isbn: "978-8807884559",
     anno: 2011,
     editore: "Feltrinelli",
-    icona: "⚡"
+    icona: "⚡",
+    immagine: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80'
   }
 ];
 
@@ -622,11 +647,13 @@ function renderGriglia() {
 
     return `
       <article class="book-card" data-id="${l.id}">
-        <div class="book-card-header" style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.5rem;">
-          <span style="font-size: 1.8rem;">${l.icona || '📚'}</span>
-          <div style="display: flex; gap: 0.35rem;">
-            <button class="btn-icon-sm" onclick="apriModaleLibro(${l.id})" title="Modifica Libro" style="background: rgba(255,255,255,0.08); border: none; padding: 4px 8px; border-radius: 6px; color: #38bdf8; cursor: pointer;">✏️</button>
-            <button class="btn-icon-sm" onclick="eliminaLibro(${l.id})" title="Elimina Libro" style="background: rgba(255,255,255,0.08); border: none; padding: 4px 8px; border-radius: 6px; color: #f87171; cursor: pointer;">🗑️</button>
+        <div class="book-cover-container" style="position: relative; width: 100%; height: 140px; border-radius: 8px; overflow: hidden; background: #0f172a; margin-bottom: 0.5rem;">
+          <img src="${l.immagine || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80'}" alt="${l.titolo}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: 2.5rem; background: rgba(15, 23, 42, 0.6);">${l.icona || '📚'}</div>
+          <span style="position: absolute; top: 6px; right: 6px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); padding: 2px 7px; border-radius: 5px; font-size: 0.7rem; font-weight: 700; color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">${l.icona || '📖'} ${l.genere}</span>
+          <div style="position: absolute; top: 6px; left: 6px; display: flex; gap: 0.25rem;">
+            <button class="btn-icon-sm" onclick="apriModaleLibro(${l.id})" title="Modifica Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 3px 6px; border-radius: 5px; color: #38bdf8; cursor: pointer; font-size: 0.75rem;">✏️</button>
+            <button class="btn-icon-sm" onclick="eliminaLibro(${l.id})" title="Elimina Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 3px 6px; border-radius: 5px; color: #f87171; cursor: pointer; font-size: 0.75rem;">🗑️</button>
           </div>
         </div>
 
