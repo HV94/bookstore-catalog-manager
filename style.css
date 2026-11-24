@@ -911,6 +911,70 @@ body {
     flex-direction: column;
     text-align: center;
   }
+
+  /* Griglia a 2 colonne compatte per libri */
+  .books-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .book-card {
+    padding: 0.85rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .book-title {
+    font-size: 0.85rem !important;
+    line-height: 1.25 !important;
+    min-height: 2.2rem;
+  }
+
+  .book-price {
+    font-size: 1rem !important;
+  }
+
+  /* Cassa & Carrello a cassetto dal basso (Bottom Sheet) */
+  .cart-drawer {
+    top: auto !important;
+    right: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 85vh !important;
+    max-height: 85vh !important;
+    border-radius: 20px 20px 0 0 !important;
+    border-top: 2px solid #3b82f6 !important;
+    border-left: none !important;
+    transform: translateY(100%) !important;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .cart-drawer.open {
+    transform: translateY(0) !important;
+    visibility: visible !important;
+  }
+
+  .cart-drawer-header::before {
+    content: "";
+    display: block;
+    width: 44px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 99px;
+    margin: 0 auto 10px;
+  }
+
+  .btn-cart-qty, .qty-btn {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.1rem !important;
+    border-radius: 8px !important;
+  }
+
+  .cart-qty-val, .qty-count {
+    font-size: 1rem !important;
+    min-width: 24px !important;
+  }
 }
 
 
