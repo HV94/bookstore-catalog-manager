@@ -28,7 +28,7 @@ const LIBRI_INIZIALI = [
     anno: 2018,
     editore: "Apogeo",
     icona: "💻",
-    immagine: 'covers/cover-1.svg'
+    immagine: 'covers/cover-1.jpg'
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const LIBRI_INIZIALI = [
     anno: 2020,
     editore: "Apogeo",
     icona: "💻",
-    immagine: 'covers/cover-2.svg'
+    immagine: 'covers/cover-2.jpg'
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const LIBRI_INIZIALI = [
     anno: 2022,
     editore: "Pearson",
     icona: "🌐",
-    immagine: 'covers/cover-3.svg'
+    immagine: 'covers/cover-3.jpg'
   },
   {
     id: 4,
@@ -67,7 +67,7 @@ const LIBRI_INIZIALI = [
     anno: 2019,
     editore: "Tecniche Nuove",
     icona: "🎨",
-    immagine: 'covers/cover-4.svg'
+    immagine: 'covers/cover-4.jpg'
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ const LIBRI_INIZIALI = [
     anno: 2021,
     editore: "Tecniche Nuove",
     icona: "⚡",
-    immagine: 'covers/cover-5.svg'
+    immagine: 'covers/cover-5.jpg'
   },
 
   // Categoria: Narrativa
@@ -95,7 +95,7 @@ const LIBRI_INIZIALI = [
     anno: 1949,
     editore: "Mondadori",
     icona: "📖",
-    immagine: 'covers/cover-6.svg'
+    immagine: 'covers/cover-6.jpg'
   },
   {
     id: 7,
@@ -108,7 +108,7 @@ const LIBRI_INIZIALI = [
     anno: 1954,
     editore: "Bompiani",
     icona: "🗡️",
-    immagine: 'covers/cover-7.svg'
+    immagine: 'covers/cover-7.jpg'
   },
   {
     id: 8,
@@ -121,7 +121,7 @@ const LIBRI_INIZIALI = [
     anno: 1965,
     editore: "Fanucci",
     icona: "🏜️",
-    immagine: 'covers/cover-8.svg'
+    immagine: 'covers/cover-8.jpg'
   },
   {
     id: 9,
@@ -134,7 +134,7 @@ const LIBRI_INIZIALI = [
     anno: 1943,
     editore: "Bompiani",
     icona: "👑",
-    immagine: 'covers/cover-9.svg'
+    immagine: 'covers/cover-9.jpg'
   },
   {
     id: 10,
@@ -147,7 +147,7 @@ const LIBRI_INIZIALI = [
     anno: 1980,
     editore: "Bompiani",
     icona: "🏰",
-    immagine: 'covers/cover-10.svg'
+    immagine: 'covers/cover-10.jpg'
   },
 
   // Categoria: Saggistica
@@ -162,7 +162,7 @@ const LIBRI_INIZIALI = [
     anno: 2014,
     editore: "Bompiani",
     icona: "🧠",
-    immagine: 'covers/cover-11.svg'
+    immagine: 'covers/cover-11.jpg'
   },
   {
     id: 12,
@@ -175,7 +175,7 @@ const LIBRI_INIZIALI = [
     anno: 2012,
     editore: "Mondadori",
     icona: "🧠",
-    immagine: 'covers/cover-12.svg'
+    immagine: 'covers/cover-12.jpg'
   },
   {
     id: 13,
@@ -188,7 +188,7 @@ const LIBRI_INIZIALI = [
     anno: 1997,
     editore: "Einaudi",
     icona: "🌍",
-    immagine: 'covers/cover-13.svg'
+    immagine: 'covers/cover-13.jpg'
   },
   {
     id: 14,
@@ -201,7 +201,7 @@ const LIBRI_INIZIALI = [
     anno: 2014,
     editore: "Raffaello Cortina",
     icona: "🌌",
-    immagine: 'covers/cover-14.svg'
+    immagine: 'covers/cover-14.jpg'
   },
   {
     id: 15,
@@ -214,7 +214,7 @@ const LIBRI_INIZIALI = [
     anno: 2019,
     editore: "Sperling & Kupfer",
     icona: "📈",
-    immagine: 'covers/cover-15.svg'
+    immagine: 'covers/cover-15.jpg'
   },
 
   // Categoria: Classici
@@ -229,7 +229,7 @@ const LIBRI_INIZIALI = [
     anno: 1321,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'covers/cover-16.svg'
+    immagine: 'covers/cover-16.jpg'
   },
   {
     id: 17,
@@ -242,7 +242,7 @@ const LIBRI_INIZIALI = [
     anno: 1840,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'covers/cover-17.svg'
+    immagine: 'covers/cover-17.jpg'
   },
   {
     id: 18,
@@ -255,7 +255,7 @@ const LIBRI_INIZIALI = [
     anno: 1869,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'covers/cover-18.svg'
+    immagine: 'covers/cover-18.jpg'
   },
   {
     id: 19,
@@ -268,7 +268,7 @@ const LIBRI_INIZIALI = [
     anno: 1813,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'covers/cover-19.svg'
+    immagine: 'covers/cover-19.jpg'
   },
   {
     id: 20,
@@ -281,7 +281,7 @@ const LIBRI_INIZIALI = [
     anno: -800,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'covers/cover-20.svg'
+    immagine: 'covers/cover-20.jpg'
   },
 
   // Categoria: Scienza
@@ -296,7 +296,7 @@ const LIBRI_INIZIALI = [
     anno: 2017,
     editore: "Adelphi",
     icona: "⏳",
-    immagine: 'covers/cover-21.svg'
+    immagine: 'covers/cover-21.jpg'
   },
   {
     id: 22,
@@ -309,7 +309,7 @@ const LIBRI_INIZIALI = [
     anno: 2003,
     editore: "TEA",
     icona: "🔬",
-    immagine: 'covers/cover-22.svg'
+    immagine: 'covers/cover-22.jpg'
   },
   {
     id: 23,
@@ -322,7 +322,7 @@ const LIBRI_INIZIALI = [
     anno: 1980,
     editore: "Bompiani",
     icona: "🔭",
-    immagine: 'covers/cover-23.svg'
+    immagine: 'covers/cover-23.jpg'
   },
   {
     id: 24,
@@ -335,7 +335,7 @@ const LIBRI_INIZIALI = [
     anno: 1999,
     editore: "Einaudi",
     icona: "🌌",
-    immagine: 'covers/cover-24.svg'
+    immagine: 'covers/cover-24.jpg'
   },
   {
     id: 25,
@@ -348,7 +348,7 @@ const LIBRI_INIZIALI = [
     anno: 2011,
     editore: "Feltrinelli",
     icona: "⚡",
-    immagine: 'covers/cover-25.svg'
+    immagine: 'covers/cover-25.jpg'
   }
 ];
 
@@ -654,12 +654,12 @@ function renderGriglia() {
 
     return `
       <article class="book-card" data-id="${l.id}">
-        <div class="book-cover-container" style="position: relative; width: 100%; height: 180px; border-radius: 8px; overflow: hidden; background: #0b1120; margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: center;">
-          <img src="${l.immagine || ('covers/cover-' + l.id + '.svg')}" alt="${l.titolo}" loading="lazy" style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" onerror="this.src='covers/cover-1.svg';">
-          <span style="position: absolute; top: 6px; right: 6px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); padding: 2px 7px; border-radius: 5px; font-size: 0.7rem; font-weight: 700; color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">${l.icona || '📖'} ${l.genere}</span>
-          <div style="position: absolute; top: 6px; left: 6px; display: flex; gap: 0.25rem;">
-            <button class="btn-icon-sm" onclick="apriModaleLibro(${l.id})" title="Modifica Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 3px 6px; border-radius: 5px; color: #38bdf8; cursor: pointer; font-size: 0.75rem;">✏️</button>
-            <button class="btn-icon-sm" onclick="eliminaLibro(${l.id})" title="Elimina Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 3px 6px; border-radius: 5px; color: #f87171; cursor: pointer; font-size: 0.75rem;">🗑️</button>
+        <div class="book-cover-container" style="position: relative; width: 100%; height: 230px; border-radius: 8px; overflow: hidden; background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%); margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; padding: 10px;">
+          <img src="${l.immagine || ('covers/cover-' + l.id + '.jpg')}" alt="${l.titolo}" loading="lazy" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; border-radius: 4px; box-shadow: 0 6px 16px rgba(0,0,0,0.6); transition: transform 0.25s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.src='https://covers.openlibrary.org/b/id/8065615-L.jpg';">
+          <span style="position: absolute; top: 8px; right: 8px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">${l.icona || '📖'} ${l.genere}</span>
+          <div style="position: absolute; top: 8px; left: 8px; display: flex; gap: 0.35rem;">
+            <button class="btn-icon-sm" onclick="apriModaleLibro(${l.id})" title="Modifica Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 4px 7px; border-radius: 6px; color: #38bdf8; cursor: pointer; font-size: 0.75rem;">✏️</button>
+            <button class="btn-icon-sm" onclick="eliminaLibro(${l.id})" title="Elimina Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 4px 7px; border-radius: 6px; color: #f87171; cursor: pointer; font-size: 0.75rem;">🗑️</button>
           </div>
         </div>
 

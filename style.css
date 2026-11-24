@@ -1878,9 +1878,12 @@ body[data-theme="dark"] .receipt-modal-card {
     display: none !important;
   }
   
-  #receiptModal {
+  #receiptModal,
+  #receiptModal.hidden {
     position: static !important;
     display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     padding: 0 !important;
     margin: 0 auto !important;
     background: transparent !important;
