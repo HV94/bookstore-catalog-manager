@@ -28,7 +28,7 @@ const LIBRI_INIZIALI = [
     anno: 2018,
     editore: "Apogeo",
     icona: "💻",
-    immagine: 'https://covers.openlibrary.org/b/id/8065615-M.jpg'
+    immagine: 'covers/cover-1.svg'
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const LIBRI_INIZIALI = [
     anno: 2020,
     editore: "Apogeo",
     icona: "💻",
-    immagine: 'https://covers.openlibrary.org/b/id/10143650-M.jpg'
+    immagine: 'covers/cover-2.svg'
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const LIBRI_INIZIALI = [
     anno: 2022,
     editore: "Pearson",
     icona: "🌐",
-    immagine: 'https://covers.openlibrary.org/b/id/193126-M.jpg'
+    immagine: 'covers/cover-3.svg'
   },
   {
     id: 4,
@@ -67,7 +67,7 @@ const LIBRI_INIZIALI = [
     anno: 2019,
     editore: "Tecniche Nuove",
     icona: "🎨",
-    immagine: 'https://covers.openlibrary.org/b/id/7367213-M.jpg'
+    immagine: 'covers/cover-4.svg'
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ const LIBRI_INIZIALI = [
     anno: 2021,
     editore: "Tecniche Nuove",
     icona: "⚡",
-    immagine: 'https://covers.openlibrary.org/b/id/10737959-M.jpg'
+    immagine: 'covers/cover-5.svg'
   },
 
   // Categoria: Narrativa
@@ -95,7 +95,7 @@ const LIBRI_INIZIALI = [
     anno: 1949,
     editore: "Mondadori",
     icona: "📖",
-    immagine: 'https://covers.openlibrary.org/b/id/9267242-M.jpg'
+    immagine: 'covers/cover-6.svg'
   },
   {
     id: 7,
@@ -108,7 +108,7 @@ const LIBRI_INIZIALI = [
     anno: 1954,
     editore: "Bompiani",
     icona: "🗡️",
-    immagine: 'https://covers.openlibrary.org/b/id/14625765-M.jpg'
+    immagine: 'covers/cover-7.svg'
   },
   {
     id: 8,
@@ -121,7 +121,7 @@ const LIBRI_INIZIALI = [
     anno: 1965,
     editore: "Fanucci",
     icona: "🏜️",
-    immagine: 'https://covers.openlibrary.org/b/id/11481354-M.jpg'
+    immagine: 'covers/cover-8.svg'
   },
   {
     id: 9,
@@ -134,7 +134,7 @@ const LIBRI_INIZIALI = [
     anno: 1943,
     editore: "Bompiani",
     icona: "👑",
-    immagine: 'https://covers.openlibrary.org/b/id/10708272-M.jpg'
+    immagine: 'covers/cover-9.svg'
   },
   {
     id: 10,
@@ -147,7 +147,7 @@ const LIBRI_INIZIALI = [
     anno: 1980,
     editore: "Bompiani",
     icona: "🏰",
-    immagine: 'https://covers.openlibrary.org/b/id/8598263-M.jpg'
+    immagine: 'covers/cover-10.svg'
   },
 
   // Categoria: Saggistica
@@ -162,7 +162,7 @@ const LIBRI_INIZIALI = [
     anno: 2014,
     editore: "Bompiani",
     icona: "🧠",
-    immagine: 'https://covers.openlibrary.org/b/id/8634250-M.jpg'
+    immagine: 'covers/cover-11.svg'
   },
   {
     id: 12,
@@ -175,7 +175,7 @@ const LIBRI_INIZIALI = [
     anno: 2012,
     editore: "Mondadori",
     icona: "🧠",
-    immagine: 'https://covers.openlibrary.org/b/id/13290711-M.jpg'
+    immagine: 'covers/cover-12.svg'
   },
   {
     id: 13,
@@ -188,7 +188,7 @@ const LIBRI_INIZIALI = [
     anno: 1997,
     editore: "Einaudi",
     icona: "🌍",
-    immagine: 'https://covers.openlibrary.org/b/id/7884018-M.jpg'
+    immagine: 'covers/cover-13.svg'
   },
   {
     id: 14,
@@ -201,7 +201,7 @@ const LIBRI_INIZIALI = [
     anno: 2014,
     editore: "Raffaello Cortina",
     icona: "🌌",
-    immagine: 'https://covers.openlibrary.org/b/id/9269326-M.jpg'
+    immagine: 'covers/cover-14.svg'
   },
   {
     id: 15,
@@ -214,7 +214,7 @@ const LIBRI_INIZIALI = [
     anno: 2019,
     editore: "Sperling & Kupfer",
     icona: "📈",
-    immagine: 'https://covers.openlibrary.org/b/id/12539702-M.jpg'
+    immagine: 'covers/cover-15.svg'
   },
 
   // Categoria: Classici
@@ -229,7 +229,7 @@ const LIBRI_INIZIALI = [
     anno: 1321,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://covers.openlibrary.org/b/id/11621024-M.jpg'
+    immagine: 'covers/cover-16.svg'
   },
   {
     id: 17,
@@ -242,7 +242,7 @@ const LIBRI_INIZIALI = [
     anno: 1840,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://covers.openlibrary.org/b/id/1007875-M.jpg'
+    immagine: 'covers/cover-17.svg'
   },
   {
     id: 18,
@@ -255,7 +255,7 @@ const LIBRI_INIZIALI = [
     anno: 1869,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://covers.openlibrary.org/b/id/12621906-M.jpg'
+    immagine: 'covers/cover-18.svg'
   },
   {
     id: 19,
@@ -268,7 +268,7 @@ const LIBRI_INIZIALI = [
     anno: 1813,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://covers.openlibrary.org/b/id/14348537-M.jpg'
+    immagine: 'covers/cover-19.svg'
   },
   {
     id: 20,
@@ -281,7 +281,7 @@ const LIBRI_INIZIALI = [
     anno: -800,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://covers.openlibrary.org/b/id/9045853-M.jpg'
+    immagine: 'covers/cover-20.svg'
   },
 
   // Categoria: Scienza
@@ -296,7 +296,7 @@ const LIBRI_INIZIALI = [
     anno: 2017,
     editore: "Adelphi",
     icona: "⏳",
-    immagine: 'https://covers.openlibrary.org/b/id/8177373-M.jpg'
+    immagine: 'covers/cover-21.svg'
   },
   {
     id: 22,
@@ -309,7 +309,7 @@ const LIBRI_INIZIALI = [
     anno: 2003,
     editore: "TEA",
     icona: "🔬",
-    immagine: 'https://covers.openlibrary.org/b/id/12725620-M.jpg'
+    immagine: 'covers/cover-22.svg'
   },
   {
     id: 23,
@@ -322,7 +322,7 @@ const LIBRI_INIZIALI = [
     anno: 1980,
     editore: "Bompiani",
     icona: "🔭",
-    immagine: 'https://covers.openlibrary.org/b/id/8283901-M.jpg'
+    immagine: 'covers/cover-23.svg'
   },
   {
     id: 24,
@@ -335,7 +335,7 @@ const LIBRI_INIZIALI = [
     anno: 1999,
     editore: "Einaudi",
     icona: "🌌",
-    immagine: 'https://covers.openlibrary.org/b/id/1007630-M.jpg'
+    immagine: 'covers/cover-24.svg'
   },
   {
     id: 25,
@@ -348,7 +348,7 @@ const LIBRI_INIZIALI = [
     anno: 2011,
     editore: "Feltrinelli",
     icona: "⚡",
-    immagine: 'https://covers.openlibrary.org/b/id/6307967-M.jpg'
+    immagine: 'covers/cover-25.svg'
   }
 ];
 
@@ -654,9 +654,8 @@ function renderGriglia() {
 
     return `
       <article class="book-card" data-id="${l.id}">
-        <div class="book-cover-container" style="position: relative; width: 100%; height: 155px; border-radius: 8px; overflow: hidden; background: #0f172a; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
-          <img src="${l.immagine || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80'}" alt="${l.titolo}" loading="lazy" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-          <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: 2.5rem; background: rgba(15, 23, 42, 0.6);">${l.icona || '📚'}</div>
+        <div class="book-cover-container" style="position: relative; width: 100%; height: 180px; border-radius: 8px; overflow: hidden; background: #0b1120; margin-bottom: 0.6rem; display: flex; align-items: center; justify-content: center;">
+          <img src="${l.immagine || ('covers/cover-' + l.id + '.svg')}" alt="${l.titolo}" loading="lazy" style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" onerror="this.src='covers/cover-1.svg';">
           <span style="position: absolute; top: 6px; right: 6px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); padding: 2px 7px; border-radius: 5px; font-size: 0.7rem; font-weight: 700; color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">${l.icona || '📖'} ${l.genere}</span>
           <div style="position: absolute; top: 6px; left: 6px; display: flex; gap: 0.25rem;">
             <button class="btn-icon-sm" onclick="apriModaleLibro(${l.id})" title="Modifica Libro" style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15); padding: 3px 6px; border-radius: 5px; color: #38bdf8; cursor: pointer; font-size: 0.75rem;">✏️</button>

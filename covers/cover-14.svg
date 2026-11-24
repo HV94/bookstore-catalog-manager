@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="grad_14" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09091f" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <filter id="shadow_14" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="240" rx="8" fill="url(#grad_14)" />
+  
+  <!-- Outer subtle border -->
+  <rect x="6" y="6" width="388" height="228" rx="6" fill="none" stroke="#a855f7" stroke-width="1.2" opacity="0.3" />
+
+  <!-- Left spine band -->
+  <rect x="0" y="0" width="12" height="240" fill="#000000" opacity="0.35" />
+  <line x1="12" y1="0" x2="12" y2="240" stroke="#a855f7" stroke-width="1" opacity="0.25" />
+
+  <!-- Publisher Badge (Centered between top buttons and genre tag) -->
+  <g transform="translate(70, 10)">
+    <rect x="0" y="0" width="120" height="20" rx="4" fill="#a855f7" opacity="0.2"/>
+    <rect x="0" y="0" width="120" height="20" rx="4" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.6"/>
+    <text x="60" y="14" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="9" font-weight="800" fill="#a855f7" letter-spacing="1">RAFFAELLO CORTINA</text>
+  </g>
+
+  <!-- Left Content: Title, Subtitle, Author -->
+  <g transform="translate(26, 62)">
+    <!-- Author -->
+    <text x="0" y="14" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Carlo Rovelli</text>
+    
+    <!-- Title -->
+    <text x="0" y="44" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" fill="#ffffff" letter-spacing="-0.3" filter="url(#shadow_14)">La realt&#224; non &#232; come appare</text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="68" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">La struttura del mondo e i quanti</text>
+    
+    <!-- Accent Line -->
+    <line x1="0" y1="84" x2="45" y2="84" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right Motif Artwork -->
+  <g id="motif_14">
+    <g stroke="#c084fc" stroke-width="1.5" fill="none">
+                <circle cx="310" cy="125" r="16"/>
+                <circle cx="310" cy="125" r="35" stroke-dasharray="3,3"/>
+                <circle cx="310" cy="125" r="54" opacity="0.6"/>
+                <line x1="255" y1="125" x2="365" y2="125"/>
+                <line x1="310" y1="70" x2="310" y2="180"/>
+            </g>
+            <circle cx="345" cy="125" r="5" fill="#e879f9"/>
+            <circle cx="310" cy="90" r="5" fill="#e879f9"/>
+  </g>
+
+  <!-- Bottom Details -->
+  <g transform="translate(26, 214)">
+    <line x1="0" y1="0" x2="350" y2="0" stroke="#ffffff" stroke-width="0.8" opacity="0.12"/>
+    <text x="0" y="16" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#64748b" letter-spacing="1">EDIZIONE ITALIANA</text>
+    <text x="350" y="16" text-anchor="end" font-family="monospace" font-size="8.5" fill="#a855f7">VOL #14</text>
+  </g>
+</svg>

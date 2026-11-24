@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="grad_16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#210909" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <filter id="shadow_16" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="240" rx="8" fill="url(#grad_16)" />
+  
+  <!-- Outer subtle border -->
+  <rect x="6" y="6" width="388" height="228" rx="6" fill="none" stroke="#f59e0b" stroke-width="1.2" opacity="0.3" />
+
+  <!-- Left spine band -->
+  <rect x="0" y="0" width="12" height="240" fill="#000000" opacity="0.35" />
+  <line x1="12" y1="0" x2="12" y2="240" stroke="#f59e0b" stroke-width="1" opacity="0.25" />
+
+  <!-- Publisher Badge (Centered between top buttons and genre tag) -->
+  <g transform="translate(70, 10)">
+    <rect x="0" y="0" width="120" height="20" rx="4" fill="#f59e0b" opacity="0.2"/>
+    <rect x="0" y="0" width="120" height="20" rx="4" fill="none" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+    <text x="60" y="14" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="9" font-weight="800" fill="#f59e0b" letter-spacing="1">OSCAR CLASSICI MONDADORI</text>
+  </g>
+
+  <!-- Left Content: Title, Subtitle, Author -->
+  <g transform="translate(26, 62)">
+    <!-- Author -->
+    <text x="0" y="14" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Dante Alighieri</text>
+    
+    <!-- Title -->
+    <text x="0" y="44" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="20" font-weight="800" fill="#ffffff" letter-spacing="-0.3" filter="url(#shadow_16)">La Divina Commedia</text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="68" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="11" font-weight="500" fill="#94a3b8">Inferno • Purgatorio • Paradiso</text>
+    
+    <!-- Accent Line -->
+    <line x1="0" y1="84" x2="45" y2="84" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right Motif Artwork -->
+  <g id="motif_16">
+    <circle cx="310" cy="125" r="50" fill="#450a0a" stroke="#d97706" stroke-width="3"/>
+            <path d="M275,125 C275,95 345,95 345,125 C345,155 275,155 275,125 Z" fill="none" stroke="#f59e0b" stroke-width="2"/>
+            <circle cx="310" cy="125" r="8" fill="#fef3c7"/>
+  </g>
+
+  <!-- Bottom Details -->
+  <g transform="translate(26, 214)">
+    <line x1="0" y1="0" x2="350" y2="0" stroke="#ffffff" stroke-width="0.8" opacity="0.12"/>
+    <text x="0" y="16" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="8.5" font-weight="700" fill="#64748b" letter-spacing="1">EDIZIONE ITALIANA</text>
+    <text x="350" y="16" text-anchor="end" font-family="monospace" font-size="8.5" fill="#f59e0b">VOL #16</text>
+  </g>
+</svg>
