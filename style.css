@@ -1182,9 +1182,73 @@ body {
     min-width: 24px !important;
   }
 
-  .receipt-modal-card {
-    padding: 1rem;
-    max-height: 96vh;
+  /* Anti-taglio e Safe-Area Scontrino Cassa Mobile */
+  #receiptModal.modal {
+    align-items: flex-start !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.75rem 0.5rem max(6.5rem, env(safe-area-inset-bottom, 24px) + 4.5rem) 0.5rem !important;
+    box-sizing: border-box !important;
+  }
+
+  #receiptModal .receipt-modal-card {
+    position: relative !important;
+    max-height: none !important;
+    margin: 0.25rem auto 3.5rem auto !important;
+    padding: 2.75rem 0.75rem max(3.5rem, env(safe-area-inset-bottom, 24px) + 2rem) 0.75rem !important;
+    width: 100% !important;
+    max-width: 350px !important;
+    box-sizing: border-box !important;
+  }
+
+  #receiptModal .receipt-paper {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 1rem 0.85rem !important;
+    font-size: 0.72rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  #receiptModal .receipt-divider {
+    font-size: 0.65rem !important;
+    letter-spacing: -1px;
+    overflow: hidden;
+  }
+
+  #receiptModal .receipt-barcode {
+    font-size: 0.85rem !important;
+    letter-spacing: 2px !important;
+  }
+
+  #receiptModal .receipt-actions {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.55rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  #receiptModal #closeReceiptBtn {
+    grid-column: 1 / -1 !important;
+    order: -2 !important;
+    background: #4f46e5 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4) !important;
+    font-size: 0.95rem !important;
+    min-height: 48px !important;
+  }
+
+  #receiptModal #downloadPdfReceiptBtn {
+    grid-column: 1 / -1 !important;
+    order: -1 !important;
+    min-height: 44px !important;
+  }
+
+  #receiptModal #printReceiptBtn {
+    grid-column: 1 / -1 !important;
+    min-height: 42px !important;
   }
 }
 
@@ -1751,6 +1815,35 @@ body[data-theme="dark"] .btn-cart {
 body[data-theme="dark"] .receipt-modal-card {
   background: #0f172a;
   color: #f8fafc;
+}
+
+.receipt-close-corner {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #334155;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  font-size: 1.4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10006;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.receipt-close-corner:hover,
+.receipt-close-corner:active {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+  transform: scale(1.08);
 }
 
 .receipt-paper {
