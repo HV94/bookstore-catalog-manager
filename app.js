@@ -28,7 +28,7 @@ const LIBRI_INIZIALI = [
     anno: 2018,
     editore: "Apogeo",
     icona: "💻",
-    immagine: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/8065615-M.jpg'
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const LIBRI_INIZIALI = [
     anno: 2020,
     editore: "Apogeo",
     icona: "💻",
-    immagine: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/10143650-M.jpg'
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const LIBRI_INIZIALI = [
     anno: 2022,
     editore: "Pearson",
     icona: "🌐",
-    immagine: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/193126-M.jpg'
   },
   {
     id: 4,
@@ -67,7 +67,7 @@ const LIBRI_INIZIALI = [
     anno: 2019,
     editore: "Tecniche Nuove",
     icona: "🎨",
-    immagine: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/7367213-M.jpg'
   },
   {
     id: 5,
@@ -80,7 +80,7 @@ const LIBRI_INIZIALI = [
     anno: 2021,
     editore: "Tecniche Nuove",
     icona: "⚡",
-    immagine: 'https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/10737959-M.jpg'
   },
 
   // Categoria: Narrativa
@@ -95,7 +95,7 @@ const LIBRI_INIZIALI = [
     anno: 1949,
     editore: "Mondadori",
     icona: "📖",
-    immagine: 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/9267242-M.jpg'
   },
   {
     id: 7,
@@ -108,7 +108,7 @@ const LIBRI_INIZIALI = [
     anno: 1954,
     editore: "Bompiani",
     icona: "🗡️",
-    immagine: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/14625765-M.jpg'
   },
   {
     id: 8,
@@ -121,7 +121,7 @@ const LIBRI_INIZIALI = [
     anno: 1965,
     editore: "Fanucci",
     icona: "🏜️",
-    immagine: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/11481354-M.jpg'
   },
   {
     id: 9,
@@ -134,7 +134,7 @@ const LIBRI_INIZIALI = [
     anno: 1943,
     editore: "Bompiani",
     icona: "👑",
-    immagine: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/10708272-M.jpg'
   },
   {
     id: 10,
@@ -147,7 +147,7 @@ const LIBRI_INIZIALI = [
     anno: 1980,
     editore: "Bompiani",
     icona: "🏰",
-    immagine: 'https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/8598263-M.jpg'
   },
 
   // Categoria: Saggistica
@@ -162,7 +162,7 @@ const LIBRI_INIZIALI = [
     anno: 2014,
     editore: "Bompiani",
     icona: "🧠",
-    immagine: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/8634250-M.jpg'
   },
   {
     id: 12,
@@ -175,7 +175,7 @@ const LIBRI_INIZIALI = [
     anno: 2012,
     editore: "Mondadori",
     icona: "🧠",
-    immagine: 'https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/13290711-M.jpg'
   },
   {
     id: 13,
@@ -188,7 +188,7 @@ const LIBRI_INIZIALI = [
     anno: 1997,
     editore: "Einaudi",
     icona: "🌍",
-    immagine: 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/7884018-M.jpg'
   },
   {
     id: 14,
@@ -201,7 +201,7 @@ const LIBRI_INIZIALI = [
     anno: 2014,
     editore: "Raffaello Cortina",
     icona: "🌌",
-    immagine: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/9269326-M.jpg'
   },
   {
     id: 15,
@@ -214,7 +214,7 @@ const LIBRI_INIZIALI = [
     anno: 2019,
     editore: "Sperling & Kupfer",
     icona: "📈",
-    immagine: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/12539702-M.jpg'
   },
 
   // Categoria: Classici
@@ -229,7 +229,7 @@ const LIBRI_INIZIALI = [
     anno: 1321,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/11621024-M.jpg'
   },
   {
     id: 17,
@@ -242,7 +242,7 @@ const LIBRI_INIZIALI = [
     anno: 1840,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://images.unsplash.com/photo-1474932430478-367dbb6832c1?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/1007875-M.jpg'
   },
   {
     id: 18,
@@ -255,7 +255,7 @@ const LIBRI_INIZIALI = [
     anno: 1869,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/12621906-M.jpg'
   },
   {
     id: 19,
@@ -268,7 +268,7 @@ const LIBRI_INIZIALI = [
     anno: 1813,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/14348537-M.jpg'
   },
   {
     id: 20,
@@ -281,7 +281,7 @@ const LIBRI_INIZIALI = [
     anno: -800,
     editore: "Mondadori",
     icona: "🏛️",
-    immagine: 'https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/9045853-M.jpg'
   },
 
   // Categoria: Scienza
@@ -296,7 +296,7 @@ const LIBRI_INIZIALI = [
     anno: 2017,
     editore: "Adelphi",
     icona: "⏳",
-    immagine: 'https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/8177373-M.jpg'
   },
   {
     id: 22,
@@ -309,7 +309,7 @@ const LIBRI_INIZIALI = [
     anno: 2003,
     editore: "TEA",
     icona: "🔬",
-    immagine: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/12725620-M.jpg'
   },
   {
     id: 23,
@@ -322,7 +322,7 @@ const LIBRI_INIZIALI = [
     anno: 1980,
     editore: "Bompiani",
     icona: "🔭",
-    immagine: 'https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/8283901-M.jpg'
   },
   {
     id: 24,
@@ -335,7 +335,7 @@ const LIBRI_INIZIALI = [
     anno: 1999,
     editore: "Einaudi",
     icona: "🌌",
-    immagine: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/1007630-M.jpg'
   },
   {
     id: 25,
@@ -348,7 +348,7 @@ const LIBRI_INIZIALI = [
     anno: 2011,
     editore: "Feltrinelli",
     icona: "⚡",
-    immagine: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80'
+    immagine: 'https://covers.openlibrary.org/b/id/6307967-M.jpg'
   }
 ];
 
@@ -368,7 +368,14 @@ function caricaLibri() {
   const salvati = localStorage.getItem('bibliotech_libri');
   if (salvati) {
     try {
-      return JSON.parse(salvati);
+      const parsed = JSON.parse(salvati);
+      return parsed.map(l => {
+        const init = LIBRI_INIZIALI.find(item => item.id === l.id);
+        if (init && (!l.immagine || l.immagine.includes('unsplash.com'))) {
+          return { ...l, immagine: init.immagine };
+        }
+        return l;
+      });
     } catch (e) {
       console.warn("Errore lettura dati da localStorage, uso default.");
     }
@@ -647,8 +654,8 @@ function renderGriglia() {
 
     return `
       <article class="book-card" data-id="${l.id}">
-        <div class="book-cover-container" style="position: relative; width: 100%; height: 140px; border-radius: 8px; overflow: hidden; background: #0f172a; margin-bottom: 0.5rem;">
-          <img src="${l.immagine || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80'}" alt="${l.titolo}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="book-cover-container" style="position: relative; width: 100%; height: 155px; border-radius: 8px; overflow: hidden; background: #0f172a; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center;">
+          <img src="${l.immagine || 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=80'}" alt="${l.titolo}" loading="lazy" style="height: 100%; width: auto; max-width: 100%; object-fit: contain; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <div style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; font-size: 2.5rem; background: rgba(15, 23, 42, 0.6);">${l.icona || '📚'}</div>
           <span style="position: absolute; top: 6px; right: 6px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(4px); padding: 2px 7px; border-radius: 5px; font-size: 0.7rem; font-weight: 700; color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3);">${l.icona || '📖'} ${l.genere}</span>
           <div style="position: absolute; top: 6px; left: 6px; display: flex; gap: 0.25rem;">
