@@ -332,6 +332,7 @@ const LIBRI_INIZIALI = [
 // ------------------------------------------------------------------------------
 let libri = caricaLibri();
 let carrello = [];
+let metodoPagamento = 'cash';
 let filtroGenere = 'all';
 let filtroTesto = '';
 let filtroScorte = 'all';
@@ -461,12 +462,81 @@ function setupEventListeners() {
   if (clearCartBtn) clearCartBtn.addEventListener('click', svuotaCarrello);
   if (checkoutBtn) checkoutBtn.addEventListener('click', completaVendita);
 
-  // Chiusura Scontrino
+  // Metodi di Pagamento Cassa (Contanti / POS)
+  const payMethodCash = document.getElementById('payMethodCash');
+  const payMethodPos = document.getElementById('payMethodPos');
+  const cashBox = document.getElementById('cashPaymentBox');
+  const posBox = document.getElementById('posPaymentBox');
+
+  if (payMethodCash && payMethodPos) {
+    payMethodCash.addEventListener('click', () => {
+      metodoPagamento = 'cash';
+      payMethodCash.classList.add('active');
+      payMethodPos.classList.remove('active');
+      if (cashBox) cashBox.classList.remove('hidden');
+      if (posBox) posBox.classList.add('hidden');
+    });
+
+    payMethodPos.addEventListener('click', () => {
+      metodoPagamento = 'pos';
+      payMethodPos.classList.add('active');
+      payMethodCash.classList.remove('active');
+      if (cashBox) cashBox.classList.add('hidden');
+      if (posBox) posBox.classList.remove('hidden');
+    });
+  }
+
+  // Calcolo Resto Contanti in Tempo Reale
+  const cashInput = document.getElementById('cashReceivedInput');
+  if (cashInput) {
+    cashInput.addEventListener('input', calcolaResto);
+  }
+
+  const cashExactBtn = document.getElementById('cashExactBtn');
+  if (cashExactBtn) {
+    cashExactBtn.addEventListener('click', () => {
+      const totale = carrello.reduce((acc, i) => acc + (i.prezzo * i.quantita), 0);
+      if (cashInput) {
+        cashInput.value = totale.toFixed(2);
+        calcolaResto();
+      }
+    });
+  }
+
+  const quickBtns = document.querySelectorAll('.btn-cash-quick[data-amount]');
+  quickBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const amount = btn.getAttribute('data-amount');
+      if (cashInput && amount) {
+        cashInput.value = parseFloat(amount).toFixed(2);
+        calcolaResto();
+      }
+    });
+  });
+
+  // Simulazione Contactless POS
+  const posSimulateBtn = document.getElementById('posSimulateBtn');
+  const posStatusText = document.getElementById('posStatusText');
+  if (posSimulateBtn && posStatusText) {
+    posSimulateBtn.addEventListener('click', () => {
+      posStatusText.textContent = 'Transazione POS Approvata! Codice Auth #94821';
+      posStatusText.style.color = '#34d399';
+    });
+  }
+
+  // Chiusura e Stampa Scontrino
   const closeReceiptBtn = document.getElementById('closeReceiptBtn');
+  const receiptOverlay = document.getElementById('receiptOverlay');
   const printReceiptBtn = document.getElementById('printReceiptBtn');
+  const downloadPdfReceiptBtn = document.getElementById('downloadPdfReceiptBtn');
+
   if (closeReceiptBtn) closeReceiptBtn.addEventListener('click', chiudiScontrino);
+  if (receiptOverlay) receiptOverlay.addEventListener('click', chiudiScontrino);
   if (printReceiptBtn) {
     printReceiptBtn.addEventListener('click', () => window.print());
+  }
+  if (downloadPdfReceiptBtn) {
+    downloadPdfReceiptBtn.addEventListener('click', () => window.print());
   }
 
   // Tema Chiaro/Scuro
@@ -833,30 +903,98 @@ function chiudiCarrello() {
   if (overlay) overlay.classList.remove('open');
 }
 
-function completaVendita() {
-  if (carrello.length === 0) return;
+function calcolaResto() {
+  const cashInput = document.getElementById('cashReceivedInput');
+  const changeDueValue = document.getElementById('changeDueValue');
+  if (!changeDueValue) return;
 
   const totale = carrello.reduce((acc, i) => acc + (i.prezzo * i.quantita), 0);
-  const conferma = confirm(`Confermi l'emissione dello scontrino per un totale di € ${totale.toFixed(2).replace('.', ',')}?`);
-  if (conferma) {
-    // Scala le copie vendute dal magazzino
-    carrello.forEach(cartItem => {
-      const libro = libri.find(l => l.id === cartItem.id);
-      if (libro) {
-        libro.copie = Math.max(0, libro.copie - cartItem.quantita);
-      }
-    });
+  const ricevuto = cashInput ? (parseFloat(cashInput.value) || 0) : 0;
+  const resto = Math.max(0, ricevuto - totale);
+  changeDueValue.textContent = `€ ${resto.toFixed(2).replace('.', ',')}`;
+}
 
-    salvaLibri();
-    window.print();
-    carrello = [];
-    aggiornaCarrelloUI();
-    chiudiCarrello();
-    render();
+function completaVendita() {
+  if (carrello.length === 0) {
+    alert('Il carrello cassa è vuoto. Aggiungi almeno un volume prima di completare la vendita.');
+    return;
   }
+
+  const totale = carrello.reduce((acc, i) => acc + (i.prezzo * i.quantita), 0);
+  const imponibile = totale / 1.04; // IVA Editoria 4% assolta all'origine
+  const iva = totale - imponibile;
+
+  const cashInput = document.getElementById('cashReceivedInput');
+  const ricevuto = metodoPagamento === 'cash' ? (parseFloat(cashInput?.value) || totale) : totale;
+  const resto = Math.max(0, ricevuto - totale);
+
+  // 1. Scala le copie vendute dal magazzino
+  carrello.forEach(cartItem => {
+    const libro = libri.find(l => l.id === cartItem.id);
+    if (libro) {
+      libro.copie = Math.max(0, libro.copie - cartItem.quantita);
+    }
+  });
+  salvaLibri();
+
+  // 2. Popola la data e ora attuale nello scontrino
+  const adesso = new Date();
+  const dataStr = adesso.toLocaleDateString('it-IT') + ' - ' + adesso.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+  const receiptDateEl = document.getElementById('receiptDate');
+  if (receiptDateEl) receiptDateEl.textContent = dataStr;
+
+  // 3. Popola le righe dei libri acquistati nello scontrino
+  const itemsContainer = document.getElementById('receiptItemsContainer');
+  if (itemsContainer) {
+    itemsContainer.innerHTML = carrello.map(item => `
+      <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.3rem;">
+        <span style="font-weight: 600;">${item.quantita}x ${item.titolo.substring(0, 24)}</span>
+        <span>€ ${(item.prezzo * item.quantita).toFixed(2).replace('.', ',')}</span>
+      </div>
+    `).join('');
+  }
+
+  // 4. Popola i totali e la modalita di pagamento
+  const recTotal = document.getElementById('receiptTotalAmount');
+  const recPayType = document.getElementById('receiptPaymentType');
+  const recCashRow = document.getElementById('receiptCashRow');
+  const recCashReceived = document.getElementById('receiptCashReceived');
+  const recChangeRow = document.getElementById('receiptChangeRow');
+  const recChangeAmount = document.getElementById('receiptChangeAmount');
+  const recPosRow = document.getElementById('receiptPosRow');
+
+  if (recTotal) recTotal.textContent = `€ ${totale.toFixed(2).replace('.', ',')}`;
+  if (recPayType) recPayType.textContent = metodoPagamento === 'cash' ? 'CONTANTI' : 'CARTA / POS';
+
+  if (metodoPagamento === 'cash') {
+    if (recCashRow) recCashRow.style.display = 'flex';
+    if (recChangeRow) recChangeRow.style.display = 'flex';
+    if (recCashReceived) recCashReceived.textContent = `€ ${ricevuto.toFixed(2).replace('.', ',')}`;
+    if (recChangeAmount) recChangeAmount.textContent = `€ ${resto.toFixed(2).replace('.', ',')}`;
+    if (recPosRow) recPosRow.style.display = 'none';
+  } else {
+    if (recCashRow) recCashRow.style.display = 'none';
+    if (recChangeRow) recChangeRow.style.display = 'none';
+    if (recPosRow) recPosRow.style.display = 'flex';
+  }
+
+  // 5. Chiudi carrello drawer e apri modale scontrino
+  chiudiCarrello();
+  const receiptModal = document.getElementById('receiptModal');
+  if (receiptModal) receiptModal.classList.remove('hidden');
 }
 
 function chiudiScontrino() {
-  const modal = document.getElementById('receiptModal');
-  if (modal) modal.classList.add('hidden');
+  const receiptModal = document.getElementById('receiptModal');
+  if (receiptModal) receiptModal.classList.add('hidden');
+
+  // Svuota la cassa per la prossima vendita
+  carrello = [];
+  const cashInput = document.getElementById('cashReceivedInput');
+  if (cashInput) cashInput.value = '';
+  const changeDueValue = document.getElementById('changeDueValue');
+  if (changeDueValue) changeDueValue.textContent = '€ 0.00';
+
+  aggiornaCarrelloUI();
+  render();
 }
