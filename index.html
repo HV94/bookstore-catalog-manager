@@ -31,7 +31,7 @@
     <div class="container top-bar-content">
       <div class="top-bar-left">
         <span class="badge-role">Esercitazione Gestione Punto Vendita</span>
-        <span>Valentyn Haidukov &bull; Perito Informatico &bull; Categorie Protette (L. 68/99)</span>
+        <span class="dev-info"><span>Valentyn Haidukov &bull; Perito Informatico</span> <span class="cat-prot">&bull; Categorie Protette (L. 68/99)</span></span>
       </div>
       <div class="top-bar-right">
         <a href="https://hv94.github.io/curriculum-vitae/" target="_blank" rel="noopener noreferrer" class="link-social">
@@ -64,7 +64,7 @@
           🛒 Cassa / Carrello <span id="cartCountBadge" class="cart-badge">0</span>
         </button>
         <button id="openModalBtn" class="btn btn-primary">
-          <span>+</span> Aggiungi Nuovo Libro
+          <span>+</span> Nuovo Libro
         </button>
       </div>
     </div>
@@ -121,7 +121,7 @@
         <input type="text" id="searchInput" placeholder="Cerca per titolo, autore o codice ISBN-13..." autocomplete="off">
       </div>
 
-      <div class="filters-row">
+      <div class="filters-row hide-mobile">
         <div class="filter-group">
           <label for="categoryFilter">Genere:</label>
           <select id="categoryFilter">
