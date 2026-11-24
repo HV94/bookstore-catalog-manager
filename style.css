@@ -1101,6 +1101,7 @@ body {
 
   /* Cassa & Carrello a cassetto dal basso (Bottom Sheet) */
   .cart-drawer {
+    position: fixed !important;
     top: auto !important;
     right: 0 !important;
     left: 0 !important;
@@ -1111,6 +1112,8 @@ body {
     height: 90dvh !important;
     max-height: 90vh !important;
     max-height: 90dvh !important;
+    background: #0b1329 !important;
+    color: #f8fafc !important;
     border-radius: 24px 24px 0 0 !important;
     border-top: 2px solid #3b82f6 !important;
     border-left: none !important;
@@ -1121,6 +1124,7 @@ body {
     flex-direction: column !important;
     overflow: hidden !important;
     z-index: 99999 !important;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .cart-drawer.open {
@@ -1130,8 +1134,20 @@ body {
 
   .cart-drawer-header {
     position: relative !important;
-    padding: 1.5rem 1.25rem 0.75rem 1.25rem !important;
+    padding: 1.5rem 56px 0.75rem 1.25rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
     flex-shrink: 0 !important;
+  }
+
+  .cart-close-corner-btn, #closeCartBtn {
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
+    width: 38px !important;
+    height: 38px !important;
+    display: flex !important;
   }
 
   .cart-drawer-header::before {
@@ -1354,27 +1370,29 @@ body[data-theme="dark"] .btn-cart {
   opacity: 1 !important;
 }
 
-.cart-drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: min(500px, 100vw);
-  background: #0b1329 !important;
-  color: #f8fafc !important;
-  border-left: 2px solid #3b82f6;
-  box-shadow: -10px 0 45px rgba(0, 0, 0, 0.8);
-  display: flex;
-  flex-direction: column;
-  z-index: 99999;
-  transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  visibility: hidden;
-}
+@media (min-width: 769px) {
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(500px, 100vw);
+    background: #0b1329 !important;
+    color: #f8fafc !important;
+    border-left: 2px solid #3b82f6;
+    box-shadow: -10px 0 45px rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    z-index: 99999;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    visibility: hidden;
+  }
 
-.cart-drawer.open {
-  transform: translateX(0) !important;
-  visibility: visible !important;
+  .cart-drawer.open {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+  }
 }
 
 .btn-cart-plus {
@@ -1398,6 +1416,35 @@ body[data-theme="dark"] .btn-cart {
   align-items: center;
   justify-content: space-between;
   background: rgba(255, 255, 255, 0.02);
+  position: relative;
+}
+
+.cart-close-corner-btn, #closeCartBtn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #f8fafc;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100000;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
+
+.cart-close-corner-btn:hover, #closeCartBtn:hover {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
+  transform: scale(1.08);
 }
 
 .cart-drawer-title {
@@ -1413,7 +1460,7 @@ body[data-theme="dark"] .btn-cart {
 .cart-drawer-title h3 {
   font-size: 1.125rem;
   font-weight: 800;
-  color: var(--text-primary);
+  color: #ffffff !important;
   margin-bottom: 0.1rem;
 }
 
@@ -1565,13 +1612,13 @@ body[data-theme="dark"] .btn-cart {
   display: flex;
   justify-content: space-between;
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: #cbd5e1 !important;
 }
 
 .cart-total-row.grand-total {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--text-primary);
+  color: #ffffff !important;
   margin-top: 0.25rem;
 }
 
@@ -1587,7 +1634,7 @@ body[data-theme="dark"] .btn-cart {
 .section-label {
   font-size: 0.8125rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: #94a3b8 !important;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;

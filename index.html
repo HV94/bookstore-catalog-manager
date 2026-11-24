@@ -254,7 +254,7 @@
           <p class="cart-subtitle">Punto Vendita Libreria BiblioTech</p>
         </div>
       </div>
-      <button id="closeCartBtn" class="close-btn" title="Chiudi cassa">&times;</button>
+      <button id="closeCartBtn" class="close-btn cart-close-corner-btn" onclick="chiudiCarrello()" title="Chiudi cassa (X)" aria-label="Chiudi cassa">&times;</button>
     </div>
 
     <div class="cart-drawer-body">
@@ -342,6 +342,9 @@
         </button>
         <button id="clearCartBtn" class="btn btn-clear-cart" title="Azzera cassa">
           Svuota Cassa
+        </button>
+        <button id="continueShoppingBtn" class="btn btn-secondary" onclick="chiudiCarrello()" style="margin-top: 0.5rem; width: 100%;">
+          ← Continua Acquisti / Chiudi Cassa
         </button>
       </div>
     </div>
