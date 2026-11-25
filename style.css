@@ -2007,22 +2007,61 @@ body[data-theme="dark"] .receipt-modal-card {
   flex: 1;
 }
 
+/* ==========================================================================
+   STAMPA FISCALE (@media print) - SCONTRINO TERMICO BIBLIOTECH (1 SOLA PAGINA)
+   ========================================================================== */
 @media print {
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+
   html, body {
     background: #ffffff !important;
     color: #000000 !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 100% !important;
     height: auto !important;
     min-height: auto !important;
     overflow: visible !important;
   }
-  
-  /* Nascondi tutto il resto della pagina */
-  .top-bar, .app-header, main, .app-footer, .cart-drawer, .cart-overlay, #bookModal, #receiptOverlay, .receipt-actions {
+
+  /* Nascondi tassativamente tutti i nodi di primo livello tranne il modale dello scontrino */
+  body > *:not(#receiptModal) {
     display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
   }
-  
+
+  /* Nascondi con massima specificità ogni elemento estraneo del layout e bottoni */
+  body .top-bar,
+  body .app-header,
+  body .navbar,
+  body main,
+  body .app-layout,
+  body .container,
+  body .sidebar,
+  body .catalog-container,
+  body .book-grid,
+  body .books-grid,
+  body .app-footer,
+  body .cart-drawer,
+  body .cart-overlay,
+  body #bookModal,
+  body .modal-overlay,
+  #receiptModal .modal-overlay,
+  #receiptModal .receipt-actions,
+  #receiptModal #closeReceiptCornerBtn,
+  #receiptModal .receipt-close-corner {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Mostra esclusivamente la struttura dello scontrino */
   #receiptModal,
   #receiptModal.hidden {
     position: static !important;
@@ -2033,30 +2072,71 @@ body[data-theme="dark"] .receipt-modal-card {
     margin: 0 auto !important;
     background: transparent !important;
     width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
     overflow: visible !important;
+    inset: auto !important;
+    z-index: 999999 !important;
   }
-  
-  .receipt-modal-card {
+
+  #receiptModal .receipt-modal-card {
     position: static !important;
+    display: block !important;
+    visibility: visible !important;
     box-shadow: none !important;
     border: none !important;
     padding: 0 !important;
     margin: 0 auto !important;
+    width: 100% !important;
     max-width: 100% !important;
     background: transparent !important;
+    overflow: visible !important;
   }
-  
+
   #receiptPaper {
     position: static !important;
+    display: block !important;
+    visibility: visible !important;
     width: 100% !important;
-    max-width: 380px !important;
-    margin: 1rem auto !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
     box-shadow: none !important;
-    border: 1px dashed #000000 !important;
-    padding: 1.25rem !important;
+    border: 1px dashed #222222 !important;
+    padding: 0.6rem !important;
     background: #ffffff !important;
     color: #000000 !important;
     page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    font-size: 8pt !important;
+    line-height: 1.25 !important;
+  }
+
+  #receiptPaper * {
+    color: #000000 !important;
+    background: transparent !important;
+  }
+
+  #receiptPaper .receipt-divider {
+    margin: 0.2rem 0 !important;
+    font-size: 0.65rem !important;
+  }
+
+  #receiptPaper .receipt-header {
+    margin-bottom: 0.25rem !important;
+  }
+
+  #receiptPaper .receipt-totals {
+    margin-top: 0.25rem !important;
+  }
+
+  #receiptPaper .receipt-vat-note {
+    margin-top: 0.25rem !important;
+    font-size: 6.5pt !important;
+    line-height: 1.2 !important;
+  }
+
+  #receiptPaper .receipt-thanks {
+    margin-top: 0.15rem !important;
+    font-size: 7pt !important;
   }
 }
