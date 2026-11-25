@@ -2008,7 +2008,9 @@ body[data-theme="dark"] .receipt-modal-card {
 }
 
 /* ==========================================================================
-   STAMPA FISCALE (@media print {
+   STAMPA FISCALE (@media print) - SCONTRINO TERMICO
+   ========================================================================== */
+@media print {
   @page {
     size: auto;
     margin: 10mm auto;
