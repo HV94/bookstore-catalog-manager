@@ -349,6 +349,71 @@ const LIBRI_INIZIALI = [
     editore: "Feltrinelli",
     icona: "⚡",
     immagine: 'covers/cover-25.jpg'
+  },
+  {
+    id: 26,
+    titolo: "Harry Potter e la Pietra Filosofale",
+    autore: "J.K. Rowling",
+    genere: "Narrativa",
+    prezzo: 10.00,
+    copie: 14,
+    isbn: "978-8867155958",
+    anno: 1997,
+    editore: "Salani",
+    icona: "🧙‍♂️",
+    immagine: 'covers/cover-26.jpg'
+  },
+  {
+    id: 27,
+    titolo: "Il Barone Rampante",
+    autore: "Italo Calvino",
+    genere: "Classici",
+    prezzo: 9.50,
+    copie: 9,
+    isbn: "978-8804667957",
+    anno: 1957,
+    editore: "Mondadori",
+    icona: "🌳",
+    immagine: 'covers/cover-27.jpg'
+  },
+  {
+    id: 28,
+    titolo: "Clean Architecture: Guida per artigiani",
+    autore: "Robert C. Martin",
+    genere: "Informatica",
+    prezzo: 24.50,
+    copie: 6,
+    isbn: "978-8850334865",
+    anno: 2018,
+    editore: "Apogeo",
+    icona: "🏛️",
+    immagine: 'covers/cover-28.jpg'
+  },
+  {
+    id: 29,
+    titolo: "L'Arte della Guerra",
+    autore: "Sun Tzu",
+    genere: "Saggistica",
+    prezzo: 6.00,
+    copie: 15,
+    isbn: "978-8807881640",
+    anno: -500,
+    editore: "Feltrinelli",
+    icona: "⚔️",
+    immagine: 'covers/cover-29.jpg'
+  },
+  {
+    id: 30,
+    titolo: "Se questo è un uomo",
+    autore: "Primo Levi",
+    genere: "Classici",
+    prezzo: 8.50,
+    copie: 11,
+    isbn: "978-8806219352",
+    anno: 1947,
+    editore: "Einaudi",
+    icona: "🕊️",
+    immagine: 'covers/cover-30.jpg'
   }
 ];
 
@@ -365,21 +430,24 @@ let ordinamento = 'stock-desc';
 let libroInModificaId = null;
 
 function caricaLibri() {
-  const salvati = localStorage.getItem('bibliotech_libri_v5') || localStorage.getItem('bibliotech_libri');
+  const salvati = localStorage.getItem('bibliotech_libri_v6') || localStorage.getItem('bibliotech_libri_v5') || localStorage.getItem('bibliotech_libri');
   if (salvati) {
     try {
       const parsed = JSON.parse(salvati);
       const sincronizzati = parsed.map(l => {
         const init = LIBRI_INIZIALI.find(item => item.id === l.id);
-        if (init) l.prezzo = init.prezzo;
         if (init) {
-          // Forza sempre la copertina ufficiale ad alta risoluzione
-          return { ...l, immagine: init.immagine, icona: init.icona };
+          return { ...l, immagine: init.immagine, icona: init.icona, prezzo: init.prezzo, editore: init.editore };
         }
         return l;
       });
-      localStorage.setItem('bibliotech_libri_v5', JSON.stringify(sincronizzati));
-      localStorage.setItem('bibliotech_libri', JSON.stringify(sincronizzati));
+      // Aggiungi nuovi libri se non presenti
+      LIBRI_INIZIALI.forEach(init => {
+        if (!sincronizzati.some(item => item.id === init.id)) {
+          sincronizzati.push({ ...init });
+        }
+      });
+      localStorage.setItem('bibliotech_libri_v6', JSON.stringify(sincronizzati));
       return sincronizzati;
     } catch (e) {
       console.warn("Errore lettura dati da localStorage, uso default.");
@@ -389,7 +457,7 @@ function caricaLibri() {
 }
 
 function salvaLibri() {
-  localStorage.setItem('bibliotech_libri_v5', JSON.stringify(libri));
+  localStorage.setItem('bibliotech_libri_v6', JSON.stringify(libri));
   localStorage.setItem('bibliotech_libri', JSON.stringify(libri));
 }
 
@@ -663,7 +731,7 @@ function renderGriglia() {
     return `
       <article class="book-card cat-${l.genere}" data-id="${l.id}">
         <div class="book-cover-container" style="position: relative; width: 100%; height: 260px; border-radius: 12px; overflow: hidden; background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: center; padding: 14px; border: 1px solid #e2e8f0;">
-          <img src="${l.immagine || ('covers/cover-' + l.id + '.jpg')}" alt="${l.titolo}" loading="lazy" style="height: 100%; max-height: 232px; width: auto; max-width: 90%; object-fit: contain; border-radius: 2px 6px 6px 2px; box-shadow: 4px 6px 16px rgba(15, 23, 42, 0.2), -1px 0 2px rgba(15, 23, 42, 0.08); transition: transform 0.25s ease;" onmouseover="this.style.transform='scale(1.04) translateY(-2px)'" onmouseout="this.style.transform='scale(1) translateY(0)'" onerror="this.src='covers/cover-1.jpg';">
+          <img src="${(l.immagine || ('covers/cover-' + l.id + '.jpg')) + '?v=6.0'}" alt="${l.titolo}" loading="lazy" style="height: 100%; max-height: 232px; width: auto; max-width: 90%; object-fit: contain; border-radius: 2px 6px 6px 2px; box-shadow: 4px 6px 16px rgba(15, 23, 42, 0.2), -1px 0 2px rgba(15, 23, 42, 0.08); transition: transform 0.25s ease;" onmouseover="this.style.transform='scale(1.04) translateY(-2px)'" onmouseout="this.style.transform='scale(1) translateY(0)'" onerror="this.src='covers/cover-1.jpg';">
           <span style="position: absolute; top: 10px; right: 10px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(4px); padding: 4px 10px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; color: #0284c7; border: 1px solid rgba(2, 132, 199, 0.2); box-shadow: 0 2px 5px rgba(0,0,0,0.06);">${l.icona || '📖'} ${l.genere}</span>
           <div style="position: absolute; top: 10px; left: 10px; display: flex; gap: 0.35rem;">
             <button class="btn-icon-sm" onclick="apriModaleLibro(${l.id})" title="Modifica Libro" style="background: rgba(255, 255, 255, 0.95); border: 1px solid #cbd5e1; padding: 4px 8px; border-radius: 6px; color: #0284c7; cursor: pointer; font-size: 0.75rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">✏️</button>
