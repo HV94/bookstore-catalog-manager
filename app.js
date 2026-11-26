@@ -117,7 +117,7 @@ const LIBRI_INIZIALI = [
     genere: "Narrativa",
     prezzo: 16.00,
     copie: 7,
-    isbn: "978-8845292613",
+    isbn: "978-8830104716",
     anno: 1954,
     editore: "Bompiani",
     icona: "🗡️",
@@ -169,7 +169,7 @@ const LIBRI_INIZIALI = [
     genere: "Narrativa",
     prezzo: 10.00,
     copie: 14,
-    isbn: "978-8867155958",
+    isbn: "978-8831003384",
     anno: 1997,
     editore: "Salani",
     icona: "🧙‍♂️",
@@ -316,7 +316,7 @@ const LIBRI_INIZIALI = [
     genere: "Classici",
     prezzo: 7.00,
     copie: 7,
-    isbn: "978-8804347408",
+    isbn: "978-8804814801",
     anno: -800,
     editore: "Mondadori",
     icona: "🏛️",
@@ -430,7 +430,7 @@ let ordinamento = 'stock-desc';
 let libroInModificaId = null;
 
 function caricaLibri() {
-  const salvati = localStorage.getItem('bibliotech_libri_v15');
+  const salvati = localStorage.getItem('bibliotech_libri_v16');
   if (salvati) {
     try {
       const parsed = JSON.parse(salvati);
@@ -446,7 +446,7 @@ function caricaLibri() {
           sincronizzati.push({ ...init });
         }
       });
-      localStorage.setItem('bibliotech_libri_v15', JSON.stringify(sincronizzati));
+      localStorage.setItem('bibliotech_libri_v16', JSON.stringify(sincronizzati));
       return sincronizzati;
     } catch (e) {
       console.warn("Errore lettura dati da localStorage, uso default.");
@@ -454,12 +454,12 @@ function caricaLibri() {
   }
   // Clear any older versions from localStorage
   ['bibliotech_libri_v6', 'bibliotech_libri_v5', 'bibliotech_libri'].forEach(k => localStorage.removeItem(k));
-  localStorage.setItem('bibliotech_libri_v15', JSON.stringify(LIBRI_INIZIALI));
+  localStorage.setItem('bibliotech_libri_v16', JSON.stringify(LIBRI_INIZIALI));
   return [...LIBRI_INIZIALI];
 }
 
 function salvaLibri() {
-  localStorage.setItem('bibliotech_libri_v15', JSON.stringify(libri));
+  localStorage.setItem('bibliotech_libri_v16', JSON.stringify(libri));
 }
 
 // ------------------------------------------------------------------------------
