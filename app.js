@@ -16,7 +16,7 @@
 // 1. DATASET INIZIALE CATALOGO LIBRI (25 titoli specialistici)
 // ------------------------------------------------------------------------------
 const LIBRI_INIZIALI = [
-  // Categoria: Informatica & Web
+  // Categoria: Informatica & Web (6 libri)
   {
     id: 1,
     titolo: "Clean Code: Guida per artigiani del software",
@@ -37,7 +37,7 @@ const LIBRI_INIZIALI = [
     genere: "Informatica",
     prezzo: 22.00,
     copie: 4,
-    isbn: "978-8850335008",
+    isbn: "978-8850335121",
     anno: 2020,
     editore: "Apogeo",
     icona: "💻",
@@ -50,7 +50,7 @@ const LIBRI_INIZIALI = [
     genere: "Informatica",
     prezzo: 28.00,
     copie: 8,
-    isbn: "978-8871926407",
+    isbn: "978-8891916006",
     anno: 2022,
     editore: "Pearson",
     icona: "🌐",
@@ -58,12 +58,12 @@ const LIBRI_INIZIALI = [
   },
   {
     id: 4,
-    titolo: "Guida a HTML5 e CSS3",
-    autore: "Mark Pilgrim",
+    titolo: "HTML5 e CSS3: Guida Pratica",
+    autore: "Elizabeth Castro, Bruce Hyslop",
     genere: "Informatica",
     prezzo: 14.50,
     copie: 12,
-    isbn: "978-8848126748",
+    isbn: "978-8848130363",
     anno: 2019,
     editore: "Tecniche Nuove",
     icona: "🎨",
@@ -76,14 +76,27 @@ const LIBRI_INIZIALI = [
     genere: "Informatica",
     prezzo: 24.00,
     copie: 5,
-    isbn: "978-8848129817",
+    isbn: "978-8850335657",
     anno: 2021,
-    editore: "Tecniche Nuove",
+    editore: "Apogeo",
     icona: "⚡",
     immagine: 'covers/cover-5.jpg'
   },
+  {
+    id: 28,
+    titolo: "Clean Architecture",
+    autore: "Robert C. Martin",
+    genere: "Informatica",
+    prezzo: 24.50,
+    copie: 6,
+    isbn: "978-8850334391",
+    anno: 2018,
+    editore: "Apogeo",
+    icona: "🏛️",
+    immagine: 'covers/cover-28.jpg'
+  },
 
-  // Categoria: Narrativa
+  // Categoria: Narrativa (6 libri)
   {
     id: 6,
     titolo: "1984",
@@ -117,7 +130,7 @@ const LIBRI_INIZIALI = [
     genere: "Narrativa",
     prezzo: 9.90,
     copie: 10,
-    isbn: "978-8834739600",
+    isbn: "978-8834739679",
     anno: 1965,
     editore: "Fanucci",
     icona: "🏜️",
@@ -130,7 +143,7 @@ const LIBRI_INIZIALI = [
     genere: "Narrativa",
     prezzo: 5.50,
     copie: 20,
-    isbn: "978-8845292699",
+    isbn: "978-8845278617",
     anno: 1943,
     editore: "Bompiani",
     icona: "👑",
@@ -143,14 +156,27 @@ const LIBRI_INIZIALI = [
     genere: "Narrativa",
     prezzo: 8.50,
     copie: 8,
-    isbn: "978-8845278655",
+    isbn: "978-8845296833",
     anno: 1980,
     editore: "Bompiani",
     icona: "🏰",
     immagine: 'covers/cover-10.jpg'
   },
+  {
+    id: 26,
+    titolo: "Harry Potter e la Pietra Filosofale",
+    autore: "J.K. Rowling",
+    genere: "Narrativa",
+    prezzo: 10.00,
+    copie: 14,
+    isbn: "978-8867155958",
+    anno: 1997,
+    editore: "Salani",
+    icona: "🧙‍♂️",
+    immagine: 'covers/cover-26.jpg'
+  },
 
-  // Categoria: Saggistica
+  // Categoria: Saggistica (6 libri)
   {
     id: 11,
     titolo: "Sapiens: Da animali a dèi",
@@ -171,7 +197,7 @@ const LIBRI_INIZIALI = [
     genere: "Saggistica",
     prezzo: 8.90,
     copie: 6,
-    isbn: "978-8804629276",
+    isbn: "978-8804736127",
     anno: 2012,
     editore: "Mondadori",
     icona: "🧠",
@@ -197,7 +223,7 @@ const LIBRI_INIZIALI = [
     genere: "Saggistica",
     prezzo: 7.50,
     copie: 9,
-    isbn: "978-8860889218",
+    isbn: "978-8860306418",
     anno: 2014,
     editore: "Raffaello Cortina",
     icona: "🌌",
@@ -210,14 +236,27 @@ const LIBRI_INIZIALI = [
     genere: "Saggistica",
     prezzo: 9.90,
     copie: 14,
-    isbn: "978-8820067342",
+    isbn: "978-8809988569",
     anno: 2019,
-    editore: "Sperling & Kupfer",
+    editore: "Giunti",
     icona: "📈",
     immagine: 'covers/cover-15.jpg'
   },
+  {
+    id: 29,
+    titolo: "L'Arte della Guerra",
+    autore: "Sun Tzu",
+    genere: "Saggistica",
+    prezzo: 6.00,
+    copie: 15,
+    isbn: "978-8807900525",
+    anno: -500,
+    editore: "Feltrinelli",
+    icona: "⚔️",
+    immagine: 'covers/cover-29.jpg'
+  },
 
-  // Categoria: Classici
+  // Categoria: Classici (7 libri)
   {
     id: 16,
     titolo: "La Divina Commedia",
@@ -225,7 +264,7 @@ const LIBRI_INIZIALI = [
     genere: "Classici",
     prezzo: 12.50,
     copie: 8,
-    isbn: "978-8804683018",
+    isbn: "978-8804347163",
     anno: 1321,
     editore: "Mondadori",
     icona: "🏛️",
@@ -238,7 +277,7 @@ const LIBRI_INIZIALI = [
     genere: "Classici",
     prezzo: 7.50,
     copie: 12,
-    isbn: "978-8804683025",
+    isbn: "978-8804672340",
     anno: 1840,
     editore: "Mondadori",
     icona: "🏛️",
@@ -251,7 +290,7 @@ const LIBRI_INIZIALI = [
     genere: "Classici",
     prezzo: 14.00,
     copie: 4,
-    isbn: "978-8804683032",
+    isbn: "978-8804682592",
     anno: 1869,
     editore: "Mondadori",
     icona: "🏛️",
@@ -264,7 +303,7 @@ const LIBRI_INIZIALI = [
     genere: "Classici",
     prezzo: 6.90,
     copie: 16,
-    isbn: "978-8804683049",
+    isbn: "978-8804783732",
     anno: 1813,
     editore: "Mondadori",
     icona: "🏛️",
@@ -277,14 +316,40 @@ const LIBRI_INIZIALI = [
     genere: "Classici",
     prezzo: 7.00,
     copie: 7,
-    isbn: "978-8804683056",
+    isbn: "978-8804347408",
     anno: -800,
     editore: "Mondadori",
     icona: "🏛️",
     immagine: 'covers/cover-20.jpg'
   },
+  {
+    id: 27,
+    titolo: "Il Barone Rampante",
+    autore: "Italo Calvino",
+    genere: "Classici",
+    prezzo: 9.50,
+    copie: 9,
+    isbn: "978-8804774112",
+    anno: 1957,
+    editore: "Mondadori",
+    icona: "🌳",
+    immagine: 'covers/cover-27.jpg'
+  },
+  {
+    id: 30,
+    titolo: "Se questo è un uomo",
+    autore: "Primo Levi",
+    genere: "Classici",
+    prezzo: 8.50,
+    copie: 11,
+    isbn: "978-8806219352",
+    anno: 1947,
+    editore: "Einaudi",
+    icona: "🕊️",
+    immagine: 'covers/cover-30.jpg'
+  },
 
-  // Categoria: Scienza
+  // Categoria: Scienza (5 libri)
   {
     id: 21,
     titolo: "L'ordine del tempo",
@@ -305,7 +370,7 @@ const LIBRI_INIZIALI = [
     genere: "Scienza",
     prezzo: 9.50,
     copie: 8,
-    isbn: "978-8850239023",
+    isbn: "978-8850215492",
     anno: 2003,
     editore: "TEA",
     icona: "🔬",
@@ -313,14 +378,14 @@ const LIBRI_INIZIALI = [
   },
   {
     id: 23,
-    titolo: "Cosmo",
-    autore: "Carl Sagan",
+    titolo: "Dal big bang ai buchi neri",
+    autore: "Stephen Hawking",
     genere: "Scienza",
     prezzo: 9.90,
     copie: 5,
-    isbn: "978-8845298813",
-    anno: 1980,
-    editore: "Bompiani",
+    isbn: "978-8817079754",
+    anno: 1988,
+    editore: "BUR Rizzoli",
     icona: "🔭",
     immagine: 'covers/cover-23.jpg'
   },
@@ -331,7 +396,7 @@ const LIBRI_INIZIALI = [
     genere: "Scienza",
     prezzo: 9.50,
     copie: 6,
-    isbn: "978-8806223403",
+    isbn: "978-8806225797",
     anno: 1999,
     editore: "Einaudi",
     icona: "🌌",
@@ -344,76 +409,11 @@ const LIBRI_INIZIALI = [
     genere: "Scienza",
     prezzo: 8.90,
     copie: 7,
-    isbn: "978-8807884559",
+    isbn: "978-8875782795",
     anno: 2011,
-    editore: "Feltrinelli",
+    editore: "Codice Edizioni",
     icona: "⚡",
     immagine: 'covers/cover-25.jpg'
-  },
-  {
-    id: 26,
-    titolo: "Harry Potter e la Pietra Filosofale",
-    autore: "J.K. Rowling",
-    genere: "Narrativa",
-    prezzo: 10.00,
-    copie: 14,
-    isbn: "978-8867155958",
-    anno: 1997,
-    editore: "Salani",
-    icona: "🧙‍♂️",
-    immagine: 'covers/cover-26.jpg'
-  },
-  {
-    id: 27,
-    titolo: "Il Barone Rampante",
-    autore: "Italo Calvino",
-    genere: "Classici",
-    prezzo: 9.50,
-    copie: 9,
-    isbn: "978-8804667957",
-    anno: 1957,
-    editore: "Mondadori",
-    icona: "🌳",
-    immagine: 'covers/cover-27.jpg'
-  },
-  {
-    id: 28,
-    titolo: "Clean Architecture: Guida per artigiani",
-    autore: "Robert C. Martin",
-    genere: "Informatica",
-    prezzo: 24.50,
-    copie: 6,
-    isbn: "978-8850334865",
-    anno: 2018,
-    editore: "Apogeo",
-    icona: "🏛️",
-    immagine: 'covers/cover-28.jpg'
-  },
-  {
-    id: 29,
-    titolo: "L'Arte della Guerra",
-    autore: "Sun Tzu",
-    genere: "Saggistica",
-    prezzo: 6.00,
-    copie: 15,
-    isbn: "978-8807881640",
-    anno: -500,
-    editore: "Feltrinelli",
-    icona: "⚔️",
-    immagine: 'covers/cover-29.jpg'
-  },
-  {
-    id: 30,
-    titolo: "Se questo è un uomo",
-    autore: "Primo Levi",
-    genere: "Classici",
-    prezzo: 8.50,
-    copie: 11,
-    isbn: "978-8806219352",
-    anno: 1947,
-    editore: "Einaudi",
-    icona: "🕊️",
-    immagine: 'covers/cover-30.jpg'
   }
 ];
 
@@ -430,35 +430,36 @@ let ordinamento = 'stock-desc';
 let libroInModificaId = null;
 
 function caricaLibri() {
-  const salvati = localStorage.getItem('bibliotech_libri_v6') || localStorage.getItem('bibliotech_libri_v5') || localStorage.getItem('bibliotech_libri');
+  const salvati = localStorage.getItem('bibliotech_libri_v15');
   if (salvati) {
     try {
       const parsed = JSON.parse(salvati);
       const sincronizzati = parsed.map(l => {
         const init = LIBRI_INIZIALI.find(item => item.id === l.id);
         if (init) {
-          return { ...l, immagine: init.immagine, icona: init.icona, prezzo: init.prezzo, editore: init.editore };
+          return { ...l, titolo: init.titolo, autore: init.autore, genere: init.genere, isbn: init.isbn, immagine: init.immagine, icona: init.icona, prezzo: init.prezzo, editore: init.editore, anno: init.anno };
         }
         return l;
       });
-      // Aggiungi nuovi libri se non presenti
       LIBRI_INIZIALI.forEach(init => {
         if (!sincronizzati.some(item => item.id === init.id)) {
           sincronizzati.push({ ...init });
         }
       });
-      localStorage.setItem('bibliotech_libri_v6', JSON.stringify(sincronizzati));
+      localStorage.setItem('bibliotech_libri_v15', JSON.stringify(sincronizzati));
       return sincronizzati;
     } catch (e) {
       console.warn("Errore lettura dati da localStorage, uso default.");
     }
   }
+  // Clear any older versions from localStorage
+  ['bibliotech_libri_v6', 'bibliotech_libri_v5', 'bibliotech_libri'].forEach(k => localStorage.removeItem(k));
+  localStorage.setItem('bibliotech_libri_v15', JSON.stringify(LIBRI_INIZIALI));
   return [...LIBRI_INIZIALI];
 }
 
 function salvaLibri() {
-  localStorage.setItem('bibliotech_libri_v6', JSON.stringify(libri));
-  localStorage.setItem('bibliotech_libri', JSON.stringify(libri));
+  localStorage.setItem('bibliotech_libri_v15', JSON.stringify(libri));
 }
 
 // ------------------------------------------------------------------------------
