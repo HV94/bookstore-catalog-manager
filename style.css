@@ -2008,21 +2008,32 @@ body[data-theme="dark"] .receipt-modal-card {
 }
 
 /* ==========================================================================
-   STAMPA FISCALE (@media print) - SCONTRINO TERMICO
+   STAMPA FISCALE (@media print) - SCONTRINO TERMICO SINGOLA PAGINA GARANTITA
    ========================================================================== */
 @media print {
   @page {
-    size: auto;
-    margin: 10mm auto;
+    size: portrait;
+    margin: 4mm 0 !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   html, body {
     background: #ffffff !important;
     color: #000000 !important;
-    margin: 0 auto !important;
+    margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
-    height: auto !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    display: block !important;
     text-align: center !important;
   }
 
@@ -2064,9 +2075,8 @@ body[data-theme="dark"] .receipt-modal-card {
   #receiptModal,
   #receiptModal.modal,
   #receiptModal.hidden {
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
+    position: static !important;
+    display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 auto !important;
@@ -2075,13 +2085,20 @@ body[data-theme="dark"] .receipt-modal-card {
     text-align: center !important;
     visibility: visible !important;
     opacity: 1 !important;
-    display: block !important;
+    inset: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
     z-index: 999999 !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   #receiptModal .receipt-modal-card,
   .receipt-modal-card {
-    position: relative !important;
+    position: static !important;
+    display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 auto !important;
@@ -2090,27 +2107,34 @@ body[data-theme="dark"] .receipt-modal-card {
     box-shadow: none !important;
     border: none !important;
     text-align: center !important;
-    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
   }
 
   #receiptPaper,
   #receiptModal #receiptPaper,
   #receiptModal .receipt-paper,
   .receipt-paper {
+    position: static !important;
     display: inline-block !important;
     vertical-align: top !important;
-    width: 330px !important;
-    max-width: 90% !important;
-    margin: 0 auto !important;
+    width: 310px !important;
+    max-width: 95% !important;
+    margin: 4px auto !important;
     box-shadow: none !important;
     border: 1px dashed #222222 !important;
-    padding: 0.75rem !important;
+    padding: 8px 12px !important;
     background: #ffffff !important;
     color: #000000 !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
-    font-size: 8pt !important;
-    line-height: 1.25 !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    font-size: 7.5pt !important;
+    line-height: 1.2 !important;
     text-align: left !important;
     box-sizing: border-box !important;
   }
@@ -2121,30 +2145,36 @@ body[data-theme="dark"] .receipt-modal-card {
   }
 
   #receiptPaper .receipt-divider {
-    margin: 0.2rem 0 !important;
-    font-size: 0.65rem !important;
+    margin: 2px 0 !important;
+    font-size: 0.6rem !important;
     text-align: center !important;
   }
 
   #receiptPaper .receipt-header {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: 2px !important;
     text-align: center !important;
   }
 
   #receiptPaper .receipt-totals {
-    margin-top: 0.25rem !important;
+    margin-top: 2px !important;
   }
 
   #receiptPaper .receipt-vat-note {
-    margin-top: 0.25rem !important;
-    font-size: 6.5pt !important;
-    line-height: 1.2 !important;
+    margin-top: 2px !important;
+    font-size: 6pt !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+  }
+
+  #receiptPaper .receipt-barcode {
+    margin: 3px 0 !important;
+    font-size: 1rem !important;
     text-align: center !important;
   }
 
   #receiptPaper .receipt-thanks {
-    margin-top: 0.15rem !important;
-    font-size: 7pt !important;
+    margin-top: 1px !important;
+    font-size: 6.5pt !important;
     text-align: center !important;
   }
 }
